@@ -1,0 +1,148 @@
+{
+        "Appetizers": [
+            {
+                "name": "Chicken Wings", 
+                "description": "Crispy fried chicken wings tossed in your choice of sauce.",
+                "price": 9.99,
+                "options": ["bone-in", "boneless"],
+                "sauces": ["BBQ", "Buffalo", "Teriyaki", "Plain","Honey Mustard", "Sweet Chili","Garlic Parmesan"]
+            },
+            {
+                "name": "Mozzarella Sticks",
+                "description": "Breaded mozzarella sticks served with marinara sauce.",
+                "price": 7.99,
+                "sauces":["Marinara","None"]
+            },
+            {
+                "name": "Loaded Fries",
+                "description": "Crispy fries topped with melted cheese, bacon, and green onions.",
+                "price": 8.99,
+                "options":["cheese", "bacon", "green onions"]
+            },
+            {
+                "name": "Chips and Dip",
+                "description": "Tortilla chips served with a dipping sauce.",
+                "price": 6.99,
+                "sauces":["Salsa","Guacamole","Queso","None"]
+            },
+            {
+                "name": "Fried Pickels",
+                "description": "Breaded and fried pickle chips served with your choice of sauce.",
+                "price": 7.99,
+                "sauces": ["Ranch", "Honey Mustard", "Southwestern Ranch", "Blue Cheese", "None"]
+            }
+        ],
+        "Entrees": [
+            {
+                "name": "Grilled Chicken Sandwich",
+                "description": "Grilled chicken breast topped with lettuce, tomato, and mayo on a toasted bun.",
+                "price": 11.99,
+                "options":["lettuce", "tomato", "mayo","toasted bun"]
+            },
+            {
+                "name": "BBQ Ribs",
+                "description": "Slow-cooked pork ribs smothered in BBQ sauce.",
+                "price": 16.99,
+                "sauces":["BBQ","None"]
+            },
+            {
+                "name": "Steak Fajitas",
+                "description": "Sizzling fajitas served with peppers, onions, and all the fixings.",
+                "price": 18.99,
+                "meats":["Steak","Chicken","Shrimp","Veggie"],
+                "options":["peppers", "onions", "sour cream", "guacamole", "salsa"]
+            },
+            {
+                "name": "Cheeseburger",
+                "description":"1/2 lb. burger topped with cheese, lettuce, tomato, and onion on a toasted bun.",
+                "ingredients":["cheese", "lettuce", "tomato", "onion", "toasted bun"],
+                "price": 12.99
+            },
+            {
+                "name": "Personal Pizza",
+                "description": "Personal 9\" pizza with your choice of toppings.",
+                "price": 10.99,
+                "options":["Pepperoni","Sausage","Bacon","Chicken","Mushrooms","Onions","Peppers","None"],
+                "sauces":["Marinara", "Alfredo", "BBQ", "None"]
+            }
+        ],
+        "Sodas": [
+                        {
+                            "name": "Coke",
+                            "price": 2.99
+                        },
+                        {
+                            "name": "Sprite",
+                            "price": 2.99
+                        },
+                        {
+                            "name": "Dr. Pepper",
+                            "price": 2.99
+                        },
+                        {
+                            "name": "Diet Coke",
+                            "price": 2.99
+                        },
+                        {
+                            "name": "Root Beer",
+                            "price": 2.99
+                        },
+                        {
+                            "name": "Mountain Dew",
+                            "price": 2.99
+                        }
+        ],
+        "Beers": [
+                        {
+                            "name": "Bud Light",
+                            "price": 4.99
+                        },
+                        {
+                            "name": "Blue Moon",
+                            "price": 5.99
+                        },
+                        {
+                            "name": "IPA",
+                            "price": 6.99
+                        },
+                        {
+                            "name": "Stella Artois",
+                            "price": 5.99
+                        },
+                        {
+                            "name": "Guinness",
+                            "price": 6.99
+                        },
+                        {
+                            "name": "Heineken",
+                            "price": 5.99
+                        }
+        ],
+        "Cocktails": [
+                    {
+                        "name": "Margarita",
+                        "description": "Tequila, lime juice, and triple sec.",
+                        "price": 8.99
+                    },
+                    {
+                        "name": "Old Fashioned",
+                        "description": "Bourbon, sugar, bitters, and orange peel.",
+                        "price": 10.99
+                    },
+                    {
+                        "name": "Moscow Mule",
+                        "description": "Vodka, lime juice, and ginger beer.",
+                        "price": 9.99
+                    },
+                    {
+                        "name": "Mojito",
+                        "description": "White rum, lime juice, sugar, mint, and club soda.",
+                        "price": 9.99
+                    },
+                    {
+                        "name": "Martini",
+                        "description": "Gin and dry vermouth.",
+                        "price": 10.99
+                    }
+        ]
+}
