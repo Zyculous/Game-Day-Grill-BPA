@@ -9,7 +9,7 @@
     margin: 10px;
     width: 45%; /* or any other percentage value */
 }
-.colum {
+.column  {
     display: flex;
     flex-flow: column wrap;
 }
