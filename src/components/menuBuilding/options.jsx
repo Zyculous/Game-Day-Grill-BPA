@@ -4,7 +4,6 @@ const Options = ({ optionsArray, maxChecked, name}) => {
     const [options, setOptions] = useState(optionsArray || []);
     const [checkedCount, setCheckedCount] = useState(0);
     const [checkedLabels, setCheckedLabels] = useState([]);
-    //const [title, setTitle] = useState(name || "");
 
     const handleCheckboxChange = (index, label, value) => {
         if(checkedCount < maxChecked || !value) {
@@ -35,7 +34,7 @@ const Options = ({ optionsArray, maxChecked, name}) => {
                         onChange={() => handleCheckboxChange(index, option, document.getElementById(`option-${index}-${option}`).checked)}
                         disabled={isDisabled && !options[index]}
                     />
-                    <label htmlFor={`option-${index}`}>{option}</label>
+                    <label htmlFor={`option-${index}-${option}`}>{option}</label>
                 </div>
             ))}
            {/*<div>

@@ -5,7 +5,8 @@
                 "description": "Crispy fried chicken wings tossed in your choice of sauce.",
                 "price": 9.99,
                 "options": ["bone-in", "boneless"],
-                "sauces": ["BBQ", "Buffalo", "Teriyaki", "Plain","Honey Mustard", "Sweet Chili","Garlic Parmesan"]
+                "sauces": ["BBQ", "Buffalo", "Teriyaki", "Plain","Honey Mustard", "Sweet Chili","Garlic Parmesan"],
+                "src": "https://www.allrecipes.com/thmb/Hl5oNkpyhlT71h0H2GmHuMmwCZg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ALR-187822-baked-chicken-wings-2x1-5daa014314d34d62bfd9908009a6fa2a.jpg"
             },
             {
                 "name": "Mozzarella Sticks",
@@ -46,7 +47,7 @@
                 "sauces":["BBQ","None"]
             },
             {
-                "name": "Steak Fajitas",
+                "name": "Fajitas",
                 "description": "Sizzling fajitas served with peppers, onions, and all the fixings.",
                 "price": 18.99,
                 "meats":["Steak","Chicken","Shrimp","Veggie"],
