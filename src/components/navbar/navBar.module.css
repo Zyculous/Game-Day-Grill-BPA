@@ -1,0 +1,6 @@
+.navbar{
+    display: flex;
+    background-color: lightgray;
+    padding: 10px;
+    flex-direction: row;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import menu from './menu.json';
-import Category from './subcategory';
+import Category from './category';
 
 const menuData = Object.entries(menu);
 
