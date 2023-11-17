@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from "./options.module.css";
 
 const Options = ({ optionsArray, maxChecked, name}) => {
     const [options, setOptions] = useState(optionsArray || []);
@@ -24,7 +25,7 @@ const Options = ({ optionsArray, maxChecked, name}) => {
     const isDisabled = maxChecked && checkedCount >= maxChecked;
 
     return (
-        <div>
+        <div className={styles.optionCol}>
             <h3>{name}</h3>
             {options.map((option, index) => (
                 <div key={index}>
@@ -37,18 +38,6 @@ const Options = ({ optionsArray, maxChecked, name}) => {
                     <label htmlFor={`option-${index}-${option}`}>{option}</label>
                 </div>
             ))}
-           {/*<div>
-                {checkedLabels.length > 0 && (
-                    <div>
-                        <h3>Checked Options:</h3>
-                        <ul>
-                            {checkedLabels.map((checkedLabel, index) => (
-                                <li key={index}>{checkedLabel}</li>
-                            ))}
-                        </ul>
-                    </div>
-                )}
-            </div>*/}
         </div>
     );
 };

@@ -7,7 +7,6 @@ import Router from './BrowserRouter'
 function App() {
   return (
     <div className="App">
-      <NavBar></NavBar>
       <Router></Router>
     </div>
   );

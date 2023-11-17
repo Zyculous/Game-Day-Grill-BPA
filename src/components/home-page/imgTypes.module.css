@@ -1,0 +1,6 @@
+.circle{
+    box-shadow: 3px 3px 0 0 #000000, 7px 7px 0 0 black;
+    border-radius: 2000px;
+    background-color: white;
+    margin: 10px;
+}

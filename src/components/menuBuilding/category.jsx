@@ -1,8 +1,7 @@
 import React, { useEffect, useState, useReducer } from 'react';
 import {Dimensions} from 'react-native';
 import Item from './item';
-import styles from './subcategory.module.css';
-import Column from './column';
+import styles from './category.module.css';
 
 function Category({ category, items }) {
     const [isCollapsed, setIsCollapsed] = useState(true);
@@ -36,13 +35,9 @@ function Category({ category, items }) {
                 if (columns[j].height < min) {
                     min = columns[j].height;
                     minIndex = j;
-                    //console.log("smaller " + columns[j].height)
                 }
-                //console.log("Index: " + j + " Height: " + columns[j].height);
             }
-            //console.log(columns)
             let itemSize = typeof src === 'undefined' ? 1 : 2;
-            //console.log("MinIndex: " + minIndex + " SrcNum: " + itemSize)
             columns[minIndex].height += itemSize;
             columns[minIndex].items.push(item);
         }
@@ -52,35 +47,16 @@ function Category({ category, items }) {
 
     updateColumns();
 
-    //window.addEventListener('resize', updateColumns);
-
-
     useEffect(() => {
         function handleResize() {
-            //console.log("resize");
             {forceUpdate()}
         }
 
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     });
-    /*const columns = [];
-
-    items.map(item => {
-        columns.push(item);
-    });*/
 
     return (
-        /*<div>
-            <div onClick={toggleCollapse} style={{ cursor: 'pointer' }}>
-                <h3>{category} {isCollapsed ? <span>&#x25B6;</span> : <span>&#x25BC;</span>}</h3>
-            </div>
-            {!isCollapsed && (
-                <div className={styles.largeDiv}>
-                    <Column items={columns}></Column>
-                </div>
-            )}
-        </div>*/
         <div>
             <div onClick={toggleCollapse} style={{ cursor: 'pointer' }} onResizeCapture={updateColumns}>
                 <h3>{category} {isCollapsed ? <span>&#x25B6;</span> : <span>&#x25BC;</span>}</h3>
@@ -95,10 +71,9 @@ function Category({ category, items }) {
                                 description={item.description}
                                 price={item.price}
                                 options={item.options}
-                                sauces={item.sauces}
-                                meats={item.meats}
                                 key={item.name}
                                 src={item.src}
+                                count={item.count}
                             ></Item>))}
                         </div>
                     ))}

@@ -4,33 +4,61 @@
                 "name": "Chicken Wings", 
                 "description": "Crispy fried chicken wings tossed in your choice of sauce.",
                 "price": 9.99,
-                "options": ["bone-in", "boneless"],
-                "sauces": ["BBQ", "Buffalo", "Teriyaki", "Plain","Honey Mustard", "Sweet Chili","Garlic Parmesan"],
+                "options": { 
+                    "Type": {
+                        "options": ["bone-in", "boneless"],
+                        "max": 1
+                    }, 
+                    "Sauces": {
+                        "options": ["BBQ", "Buffalo", "Teriyaki", "Plain","Honey Mustard", "Sweet Chili","Garlic Parmesan"],
+                        "max": 2
+                    }
+                },
+                "count": [6, 12, 18, 24],
                 "src": "https://www.allrecipes.com/thmb/Hl5oNkpyhlT71h0H2GmHuMmwCZg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ALR-187822-baked-chicken-wings-2x1-5daa014314d34d62bfd9908009a6fa2a.jpg"
             },
             {
                 "name": "Mozzarella Sticks",
                 "description": "Breaded mozzarella sticks served with marinara sauce.",
                 "price": 7.99,
-                "sauces":["Marinara","None"]
+                "options": {
+                    "Sauces":{
+                        "options": ["Marinara","None"]
+                    }
+                }
             },
             {
                 "name": "Loaded Fries",
                 "description": "Crispy fries topped with melted cheese, bacon, and green onions.",
                 "price": 8.99,
-                "options":["cheese", "bacon", "green onions"]
+                "options":{
+                    "Toppings": {
+                        "options": ["cheese", "bacon", "green onions"],
+                        "max": 3
+                    }
+                }
             },
             {
                 "name": "Chips and Dip",
                 "description": "Tortilla chips served with a dipping sauce.",
                 "price": 6.99,
-                "sauces":["Salsa","Guacamole","Queso","None"]
+                "options":{ 
+                    "Sauces": {
+                        "options": ["Salsa","Guacamole","Queso","None"],
+                        "max": 3
+                    }
+                }
             },
             {
                 "name": "Fried Pickels",
                 "description": "Breaded and fried pickle chips served with your choice of sauce.",
                 "price": 7.99,
-                "sauces": ["Ranch", "Honey Mustard", "Southwestern Ranch", "Blue Cheese", "None"]
+                "options":{
+                    "Sauces": {
+                        "options": ["Ranch", "Honey Mustard", "Southwestern Ranch", "Blue Cheese", "None"],
+                        "max:": 1
+                    }
+                }
             }
         ],
         "Entrees": [
@@ -38,33 +66,65 @@
                 "name": "Grilled Chicken Sandwich",
                 "description": "Grilled chicken breast topped with lettuce, tomato, and mayo on a toasted bun.",
                 "price": 11.99,
-                "options":["lettuce", "tomato", "mayo","toasted bun"]
+                "options":{
+                    "Toppings":{
+                        "options": ["lettuce", "tomato", "mayo","toasted bun"],
+                        "max": 4
+                    }
+                }
             },
             {
                 "name": "BBQ Ribs",
                 "description": "Slow-cooked pork ribs smothered in BBQ sauce.",
                 "price": 16.99,
-                "sauces":["BBQ","None"]
+                "options":{
+                    "Sauces":{
+                        "options": ["BBQ","None"],
+                        "max": 1
+                    }
+                }
             },
             {
                 "name": "Fajitas",
                 "description": "Sizzling fajitas served with peppers, onions, and all the fixings.",
                 "price": 18.99,
                 "meats":["Steak","Chicken","Shrimp","Veggie"],
-                "options":["peppers", "onions", "sour cream", "guacamole", "salsa"]
+                "options":{
+                    "Toppings":{
+                        "options": ["peppers", "onions", "sour cream", "guacamole", "salsa", "None"],
+                        "max": 5
+                    }
+                }
             },
             {
                 "name": "Cheeseburger",
                 "description":"1/2 lb. burger topped with cheese, lettuce, tomato, and onion on a toasted bun.",
-                "ingredients":["cheese", "lettuce", "tomato", "onion", "toasted bun"],
-                "price": 12.99
+                "price": 12.99,
+                "options":{
+                    "Toppings":{
+                        "options": ["cheese", "lettuce", "tomato", "onion", "none"],
+                        "max": 5
+                    },
+                    "Sauces":{
+                        "options": ["BBQ", "Ketchup", "Mustard", "Mayo", "None"],
+                        "max": 1
+                    }
+                }
             },
             {
                 "name": "Personal Pizza",
                 "description": "Personal 9\" pizza with your choice of toppings.",
                 "price": 10.99,
-                "options":["Pepperoni","Sausage","Bacon","Chicken","Mushrooms","Onions","Peppers","None"],
-                "sauces":["Marinara", "Alfredo", "BBQ", "None"]
+                "options":{
+                    "Toppings":{
+                        "options": ["Pepperoni","Sausage","Bacon","Chicken","Mushrooms","Onions","Peppers","None"],
+                        "max": 7
+                    },
+                    "Sauces":{
+                        "options": ["Marinara", "Alfredo", "BBQ", "None"],
+                        "max": 1
+                    }
+                }
             }
         ],
         "Sodas": [

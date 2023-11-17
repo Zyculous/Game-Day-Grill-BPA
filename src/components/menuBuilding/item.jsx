@@ -4,9 +4,13 @@ import Options from '../menuBuilding/options';
 import styles from "./item.module.css";
 
 function Item(props) {
-    const { name, description, price, options, sauces, meats, src } = props;
+    const { name, description, price, options, count, src } = props;
     const [open, setOpen] = useState(false);
+    const [selectedCount, setSelectedCount] = useState(1);
     const closeModal = () => setOpen(false);
+    function addToCart() {
+        closeModal();
+    }
 
     return (
         <div className={src ? styles.card:styles.smallCard} onClick={() => setOpen(o => !o)}>
@@ -17,13 +21,29 @@ function Item(props) {
             </div>
             <button className={styles.btn}>view item</button>
             <Popup open={open} onClose={closeModal} id={name} modal>
-                <div className={styles.popup}>                       
-                    {meats && <Options optionsArray={meats} maxChecked={2} name="Meats"/>}
-                    {sauces && <Options optionsArray={sauces} maxChecked={2} name="Sauces"/>}
-                    {options && <Options optionsArray={options} maxChecked={2} name="Other"/>}
-                    <a className="close" onClick={closeModal}>
+                <div className={styles.popup}>
+                <a className="close" onClick={closeModal}>
                         &times;
                     </a>
+                    {Object.entries(options).map(([option, choices]) => (
+                        <Options
+                            name={option}
+                            optionsArray={choices.options}
+                            maxChecked={choices.max}
+                            key={option}
+                        ></Options>
+                    ))}
+                    <div>
+                    {count ? <>
+                        <label className={styles.count} htmlFor="count">Count:</label>
+                            <select className={styles.count} id="count" onChange={(e) => setSelectedCount(parseInt(e.target.value))}>
+                                {count.map((c, i) => (
+                                    <option key={c} value={c}>{c}</option>
+                                ))}
+                            </select>
+                        </> : null}
+                    </div>
+                    <button onClick={addToCart}>Add to cart</button>
                 </div>
             </Popup>
         </div>

@@ -1,0 +1,18 @@
+.optionCol{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    position: relative;
+    left: 48vw;
+}
+.optionCol  h3 {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+.optionCol div {
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
