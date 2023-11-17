@@ -2,3 +2,11 @@
     position: relative;
     top: 2.5vw;
 }
+.item {
+    display: flex;
+    width: -webkit-fill-available;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #c7c7c7;
+}

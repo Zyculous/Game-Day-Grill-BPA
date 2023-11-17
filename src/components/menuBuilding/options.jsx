@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from "./options.module.css";
 
-const Options = ({ optionsArray, maxChecked, name}) => {
+const Options = ({ optionsArray, maxChecked, name, itemName}) => {
     const [options, setOptions] = useState(optionsArray || []);
     const [checkedCount, setCheckedCount] = useState(0);
     const [checkedLabels, setCheckedLabels] = useState([]);
@@ -17,6 +17,10 @@ const Options = ({ optionsArray, maxChecked, name}) => {
 
             const newCheckedLabels = value ? [...checkedLabels, label] : checkedLabels.filter((checkedLabel) => checkedLabel !== label);
             setCheckedLabels(newCheckedLabels);
+
+            const oldItems = JSON.parse(localStorage.getItem({itemName})) || [];
+            const newOne = [...oldItems, label];
+            localStorage.setItem({itemName}, JSON.stringify(newOne));
         }else{
             document.getElementById(`option-${index}-${label}`).checked = false;
         }

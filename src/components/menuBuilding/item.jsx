@@ -6,18 +6,28 @@ import styles from "./item.module.css";
 function Item(props) {
     const { name, description, price, options, count, src } = props;
     const [open, setOpen] = useState(false);
-    const [selectedCount, setSelectedCount] = useState(1);
+    const [selectedCount, setSelectedCount] = useState(count ? count[0] : 1);
+    const [numInCart, setNumInCart] = useState(0);
     const closeModal = () => setOpen(false);
     function addToCart() {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-        const newItem = { name, description, price, options, count, src, selectedCount };
+        const itemOptions = JSON.parse(localStorage.getItem({name})) || [];
+        
+        const newItem = { name, description, price, src, selectedCount, itemOptions };
         const updatedCart = [...cartItems, newItem];
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         closeModal();
+        setNumInCart(numInCart + 1);
+        localStorage.setItem('numInCart', JSON.stringify(numInCart));
+    }
+
+    function handleClick(){
+        setOpen(o => !o);
+        localStorage.removeItem({name});
     }
 
     return (
-        <div className={src ? styles.card:styles.smallCard} onClick={() => setOpen(o => !o)}>
+        <div className={src ? styles.card:styles.smallCard} onClick={handleClick}>
             <div>
             {src && <img src={src} className={styles.img} alt= {name} />}
             <p className={styles.foodName}>{name}</p>
@@ -35,6 +45,7 @@ function Item(props) {
                             optionsArray={choices.options}
                             maxChecked={choices.max}
                             key={option}
+                            itemName={name}
                         ></Options>
                     ))}
                     <div>

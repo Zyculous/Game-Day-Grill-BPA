@@ -26,7 +26,8 @@ function Cart() {
     function calculateTotal() {
         let total = 0;
         for (let i = 0; i < items.length; i++) {
-            total += items[i].price;
+            const item = items[i];
+            total += isNaN(item.price) ? item.price[item.selectedCount] : item.price;
         }
         return total.toFixed(2);
     }
@@ -34,14 +35,26 @@ function Cart() {
     return (
         <div className={styles.mainDiv}>
             <h2>Shopping Cart</h2>
-            <ul>
+            <div style={{width:"100%", display:"flex", flexDirection:"row", justifyContent:"space-between"}}>
+                <div>Item Name</div>
+                <div>Item Options</div>
+                <div>Item Prices</div>
+            </div>
                 {items.map((item, index) => (
-                    <li key={index}>
-                        {item.name} - ${item.price.toFixed(2)}
+                    console.log(item),
+                    <div className={styles.item} key={index}>
+                        <h2>{item.name}</h2>
+                        <div>
+                            {item.itemOptions.map((option, index) => (
+                                <div key={index}>{option}</div>
+                            ))}
+                        </div>
+                        <p>${isNaN(item.price) ? item.price[item.selectedCount].toFixed(2) : item.price}</p>
+                        <p>Count: {item.selectedCount}</p>
                         <button onClick={() => removeItem(index)}>Remove</button>
-                    </li>
+                    </div>
+                    
                 ))}
-            </ul>
             <p>Total: ${calculateTotal()}</p>
         </div>
     );
