@@ -4,9 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Menu from './components/menuBuilding/menu.jsx';
 import NavBar from './components/navbar/navBar.jsx';
 import Home from './components/home-page/home.jsx';
+import Cart from './components/cart/cart.jsx';
 
 function App() {
-    function HomePage() {
+        function HomePage() {
         return (
             <>
                 {NavBar()}
@@ -18,7 +19,15 @@ function App() {
         return (
             <>
                 {NavBar()}
-                {Menu()}
+                {<Menu/>}
+            </>
+        );
+    }
+    function CartPage() {
+        return (
+            <>
+                {NavBar()}
+                {<Cart/>}
             </>
         );
     }
@@ -28,6 +37,7 @@ function App() {
                 <Routes>
                     <Route exact path="/" element={HomePage()} />
                     <Route path="/menu" element={MenuPage()} />
+                    <Route path="/cart" element={CartPage()} />
                     <Route path="*" element={<h1>404</h1>} />
                 </Routes>
             </div>

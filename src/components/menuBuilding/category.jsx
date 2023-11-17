@@ -18,7 +18,7 @@ function Category({ category, items }) {
     
     function updateColumns() {
         let nextCols = Math.max(1, Math.floor(Dimensions.get('window').width / minColWidth));
-        if (nextCols == numCols) { return; }
+        if (nextCols === numCols) { return; }
         numCols = nextCols;
 
         columns = [];
@@ -49,7 +49,7 @@ function Category({ category, items }) {
 
     useEffect(() => {
         function handleResize() {
-            {forceUpdate()}
+            forceUpdate()
         }
 
         window.addEventListener("resize", handleResize);

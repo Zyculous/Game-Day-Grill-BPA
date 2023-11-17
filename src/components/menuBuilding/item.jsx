@@ -9,13 +9,17 @@ function Item(props) {
     const [selectedCount, setSelectedCount] = useState(1);
     const closeModal = () => setOpen(false);
     function addToCart() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        const newItem = { name, description, price, options, count, src, selectedCount };
+        const updatedCart = [...cartItems, newItem];
+        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         closeModal();
     }
 
     return (
         <div className={src ? styles.card:styles.smallCard} onClick={() => setOpen(o => !o)}>
             <div>
-            {src && <img src={src} className={styles.img} />}
+            {src && <img src={src} className={styles.img} alt= {name} />}
             <p className={styles.foodName}>{name}</p>
             <p className={styles.foodDesc}>{description}</p>
             </div>

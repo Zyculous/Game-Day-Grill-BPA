@@ -15,7 +15,7 @@ function NavBar() {
         <nav className={styles.navbar}>
             <div onClick={click('/')}>Home</div>
             <div onClick={click('/menu')}>Menu</div>
-            <div onClick={click('/gbirej')}>do thing</div>
+            <div onClick={click('/cart')}>View Cart</div>
         </nav>
     );
 }

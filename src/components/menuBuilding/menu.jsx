@@ -6,7 +6,7 @@ const menuData = Object.entries(menu);
 
 function Menu() {
     return (
-        <div style={{position:"relative", top:"1.5vw"}}>
+        <div style={{position:"relative", top:"2.5vw"}}>
             <h1>Menu</h1>
                 {menuData.map(([category, subcategories]) => (
                     <Category category={category} items={subcategories} key={category}></Category>

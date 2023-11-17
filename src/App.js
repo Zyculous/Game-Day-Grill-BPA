@@ -5,6 +5,7 @@ import NavBar from './components/navbar/navBar.jsx';
 import Router from './BrowserRouter'
 
 function App() {
+
   return (
     <div className="App">
       <Router></Router>
