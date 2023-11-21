@@ -5,7 +5,7 @@
                 "description": "Crispy fried chicken wings tossed in your choice of sauce.",
                 "options": { 
                     "Type": {
-                        "options": ["bone-in", "boneless"],
+                        "options": ["Bone-in", "Boneless"],
                         "max": 1
                     }, 
                     "Sauces": {
@@ -38,7 +38,7 @@
                 "price": 8.99,
                 "options":{
                     "Toppings": {
-                        "options": ["cheese", "bacon", "green onions"],
+                        "options": ["No Cheese", "No Bacon", "No Green Onions"],
                         "max": 3
                     }
                 }
@@ -49,7 +49,7 @@
                 "price": 6.99,
                 "options":{ 
                     "Sauces": {
-                        "options": ["Salsa","Guacamole","Queso","None"],
+                        "options": ["No Salsa","Guacamole","Queso","None"],
                         "max": 3
                     }
                 }
@@ -73,8 +73,8 @@
                 "price": 11.99,
                 "options":{
                     "Toppings":{
-                        "options": ["lettuce", "tomato", "mayo","toasted bun"],
-                        "max": 4
+                        "options": ["No Lettuce", "No Tomato", "No Mayo"],
+                        "max": 3
                     }
                 }
             },
@@ -92,14 +92,19 @@
             {
                 "name": "Fajitas",
                 "description": "Sizzling fajitas served with peppers, onions, and all the fixings.",
-                "price": 18.99,
-                "meats":["Steak","Chicken","Shrimp","Veggie"],
                 "options":{
                     "Toppings":{
-                        "options": ["peppers", "onions", "sour cream", "guacamole", "salsa", "None"],
+                        "options": ["No Peppers", "No Onions", "No Sour Cream", "No Guacamole", "No Pico", "None"],
                         "max": 5
                     }
-                }
+                },
+                "price": {
+                    "Steak": 20.99,
+                    "Chicken": 18.99,
+                    "Shrimp": 20.99,
+                    "Veggie": 17.99
+                },
+                "mult": ["Steak","Chicken","Shrimp","Veggie"]
             },
             {
                 "name": "Cheeseburger",
@@ -107,7 +112,7 @@
                 "price": 12.99,
                 "options":{
                     "Toppings":{
-                        "options": ["cheese", "lettuce", "tomato", "onion", "none"],
+                        "options": ["No Cheese", "No Lettuce", "No Tomato", "No Onion"],
                         "max": 5
                     },
                     "Sauces":{

@@ -74,6 +74,7 @@ function Category({ category, items }) {
                                 key={item.name}
                                 src={item.src}
                                 count={item.count}
+                                mult={item.mult}
                             ></Item>))}
                         </div>
                     ))}

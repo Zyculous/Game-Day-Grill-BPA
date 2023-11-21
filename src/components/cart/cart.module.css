@@ -2,11 +2,52 @@
     position: relative;
     top: 2.5vw;
 }
-.item {
+.gridDiv {
+    display: grid;
+    grid: 'N O P C R';
+}
+.itemName {
     display: flex;
     width: -webkit-fill-available;
     height: fit-content;
     flex-direction: row;
     justify-content: space-between;
     background-color: #c7c7c7;
+    grid-area: 'N';
+}
+.itemOptions {
+    display: flex;
+    width: -webkit-fill-available;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #c7c7c7;
+    grid-area: 'O';
+}
+.itemPrice {
+    display: flex;
+    width: -webkit-fill-available;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #c7c7c7;
+    grid-area: 'P';
+}
+.itemCount {
+    display: flex;
+    width: -webkit-fill-available;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #c7c7c7;
+    grid-area: 'C';
+}
+.itemRemove {
+    display: flex;
+    width: -webkit-fill-available;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #c7c7c7;
+    grid-area: 'R';
 }

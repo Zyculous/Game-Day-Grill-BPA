@@ -8,19 +8,22 @@ const Options = ({ optionsArray, maxChecked, name, itemName}) => {
 
     const handleCheckboxChange = (index, label, value) => {
         if(checkedCount < maxChecked || !value) {
-            const newOptions = [...options];
-            newOptions[index] = label;
-            setOptions(newOptions);
+            if(value) {
+                const oldItems = JSON.parse(localStorage.getItem({itemName})) || [];
+                const newOne = [...oldItems, label];
+                localStorage.setItem({itemName}, JSON.stringify(newOne));
+            }else{
+                const oldOptions = JSON.parse(localStorage.getItem({itemName})) || [];
 
+                oldOptions.splice(oldOptions.indexOf(label), 1);
+                localStorage.removeItem({itemName});
+                localStorage.setItem({itemName}, JSON.stringify(oldOptions));
+            }
             const newCheckedCount = value ? checkedCount + 1 : checkedCount - 1;
             setCheckedCount(newCheckedCount);
 
             const newCheckedLabels = value ? [...checkedLabels, label] : checkedLabels.filter((checkedLabel) => checkedLabel !== label);
             setCheckedLabels(newCheckedLabels);
-
-            const oldItems = JSON.parse(localStorage.getItem({itemName})) || [];
-            const newOne = [...oldItems, label];
-            localStorage.setItem({itemName}, JSON.stringify(newOne));
         }else{
             document.getElementById(`option-${index}-${label}`).checked = false;
         }

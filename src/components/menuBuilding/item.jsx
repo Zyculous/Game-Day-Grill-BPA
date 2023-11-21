@@ -4,16 +4,19 @@ import Options from '../menuBuilding/options';
 import styles from "./item.module.css";
 
 function Item(props) {
-    const { name, description, price, options, count, src } = props;
+    const { name, description, price, options, count, src, mult } = props;
     const [open, setOpen] = useState(false);
-    const [selectedCount, setSelectedCount] = useState(count ? count[0] : 1);
+    const [selectedCount, setSelectedCount] = useState(count ? count[0] : null);
+    const [selectedMult, setSelectedMult] = useState(mult ? mult[0] : null);
     const [numInCart, setNumInCart] = useState(0);
     const closeModal = () => setOpen(false);
+
     function addToCart() {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         const itemOptions = JSON.parse(localStorage.getItem({name})) || [];
+        const amount = 1;
         
-        const newItem = { name, description, price, src, selectedCount, itemOptions };
+        const newItem = { name, description, price, src, selectedCount, itemOptions, amount, selectedMult };
         const updatedCart = [...cartItems, newItem];
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         closeModal();
@@ -53,6 +56,15 @@ function Item(props) {
                         <label className={styles.count} htmlFor="count">Count:</label>
                             <select className={styles.count} id="count" onChange={(e) => setSelectedCount(parseInt(e.target.value))}>
                                 {count.map((c, i) => (
+                                    <option key={c} value={c}>{c}</option>
+                                ))}
+                            </select>
+                        </> : null}
+                        {mult ? <>
+                        <label className={styles.count} htmlFor="mult">{mult[0]}:</label>
+                            <select className={styles.count} id="mult" onChange={(e) => setSelectedMult(e.target.value)}>
+                                {mult.map((c, i) => (
+                                    i > 0,
                                     <option key={c} value={c}>{c}</option>
                                 ))}
                             </select>
