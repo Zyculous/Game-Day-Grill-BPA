@@ -7,6 +7,7 @@ const Options = ({ optionsArray, maxChecked, name, itemName}) => {
     const [checkedLabels, setCheckedLabels] = useState([]);
 
     const handleCheckboxChange = (index, label, value) => {
+        console.log(itemName)
         if(checkedCount < maxChecked || !value) {
             if(value) {
                 const oldItems = JSON.parse(localStorage.getItem({itemName})) || [];

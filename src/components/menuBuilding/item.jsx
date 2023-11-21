@@ -24,9 +24,9 @@ function Item(props) {
     }
 
     function handleClick(){
+        localStorage.removeItem({name});
         if(options){
             setOpen(o => !o);
-            localStorage.removeItem({name});
         }else{
             addToCart();
         }
