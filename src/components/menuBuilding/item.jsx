@@ -4,10 +4,9 @@ import Options from '../menuBuilding/options';
 import styles from "./item.module.css";
 
 function Item(props) {
-    const { name, description, price, options, count, src, mult } = props;
+    const { name, description, price, options, subtype, src } = props;
     const [open, setOpen] = useState(false);
-    const [selectedCount, setSelectedCount] = useState(count ? count[0] : null);
-    const [selectedMult, setSelectedMult] = useState(mult ? mult[0] : null);
+    const [selectedSubtype, setSelectedSubtype] = useState(subtype ? subtype[0] : null);
     const [numInCart, setNumInCart] = useState(0);
     const closeModal = () => setOpen(false);
 
@@ -16,7 +15,7 @@ function Item(props) {
         const itemOptions = JSON.parse(localStorage.getItem({name})) || [];
         const amount = 1;
         
-        const newItem = { name, description, price, src, selectedCount, itemOptions, amount, selectedMult };
+        const newItem = { name, description, price, src, itemOptions, amount, selectedSubtype };
         const updatedCart = [...cartItems, newItem];
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
         closeModal();
@@ -25,8 +24,12 @@ function Item(props) {
     }
 
     function handleClick(){
-        setOpen(o => !o);
-        localStorage.removeItem({name});
+        if(options){
+            setOpen(o => !o);
+            localStorage.removeItem({name});
+        }else{
+            addToCart();
+        }
     }
 
     return (
@@ -36,10 +39,10 @@ function Item(props) {
             <p className={styles.foodName}>{name}</p>
             <p className={styles.foodDesc}>{description}</p>
             </div>
-            <button className={styles.btn}>view item</button>
-            <Popup open={open} onClose={closeModal} id={name} modal>
+            <button className={styles.btn}>{options ? `view item` : `add to cart`}</button>
+            {options ? <Popup open={open} onClose={closeModal} id={name} modal>
                 <div className={styles.popup}>
-                <a className="close" onClick={closeModal}>
+                    <a className="close" onClick={closeModal}>
                         &times;
                     </a>
                     {Object.entries(options).map(([option, choices]) => (
@@ -52,19 +55,10 @@ function Item(props) {
                         ></Options>
                     ))}
                     <div>
-                    {count ? <>
-                        <label className={styles.count} htmlFor="count">Count:</label>
-                            <select className={styles.count} id="count" onChange={(e) => setSelectedCount(parseInt(e.target.value))}>
-                                {count.map((c, i) => (
-                                    <option key={c} value={c}>{c}</option>
-                                ))}
-                            </select>
-                        </> : null}
-                        {mult ? <>
-                        <label className={styles.count} htmlFor="mult">{mult[0]}:</label>
-                            <select className={styles.count} id="mult" onChange={(e) => setSelectedMult(e.target.value)}>
-                                {mult.map((c, i) => (
-                                    i > 0,
+                    {subtype ? <>
+                        <label className={styles.subtype} htmlFor="subtype">Count:</label>
+                            <select className={styles.subtype} id="subtype" onChange={(e) => setSelectedSubtype(e.target.value)}>
+                                {subtype.map((c, i) => (
                                     <option key={c} value={c}>{c}</option>
                                 ))}
                             </select>
@@ -72,7 +66,7 @@ function Item(props) {
                     </div>
                     <button onClick={addToCart}>Add to cart</button>
                 </div>
-            </Popup>
+            </Popup>: null}
         </div>
     );
 }

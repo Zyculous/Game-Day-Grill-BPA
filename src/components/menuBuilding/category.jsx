@@ -73,8 +73,7 @@ function Category({ category, items }) {
                                 options={item.options}
                                 key={item.name}
                                 src={item.src}
-                                count={item.count}
-                                mult={item.mult}
+                                subtype={item.subtype}
                             ></Item>))}
                         </div>
                     ))}

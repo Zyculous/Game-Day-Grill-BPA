@@ -86,7 +86,7 @@
     width: 100vw;
     height: 33.3%;
     background-color: #f2f8f9;
-    box-shadow: 0px 0px 2px 150px rgb(38 38 38 / 75%);
+    box-shadow: 0px 0px 2px 100vw rgb(38 38 38 / 75%);
     flex-direction: column;
     z-index: 999;
 }
@@ -106,7 +106,7 @@
     justify-content: center;
     align-items: center;
 }
-.count {
+.subtype {
     display: flex;
     flex-direction: column;
     justify-content: center;

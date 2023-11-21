@@ -29,10 +29,12 @@ function Cart() {
             const item = items[i];
             total += priceCalc(item);
         }
-        return total.toFixed(2);
+        return total;
     }
     function priceCalc(item) {
-        return isNaN(item.price) ? item.price[item.selectedCount] * item.amount || item.price[item.selectedMult] * item.amount : item.price * item.amount ;
+        let perItemPrice = item.price[item.selectedSubtype || 0];
+        let total = perItemPrice * item.amount;
+        return total;
     }
 
     return (
@@ -47,13 +49,13 @@ function Cart() {
                 {items.map((item, index) => (
                     console.log(item),
                     <>
-                        <h2>{item.selectedCount ? `${item.selectedCount}x ${item.name}` : item.selectedMult ? `${item.selectedMult} ${item.name}` : item.name}</h2>
+                        <h2>{item.selectedSubtype ? `${item.selectedSubtype} ${item.name}` : item.name}</h2>
                         <div>
                             {item.itemOptions.map((option, index) => (
                                 <div key={index}>{option}</div>
                             ))}
                         </div>
-                        <p>${priceCalc(item)}</p>
+                        <p>${priceCalc(item).toFixed(2)}</p>
                         <div>
                             <button
                                 onClick={() => {
@@ -88,7 +90,7 @@ function Cart() {
                         </>
                 ))}
                 </div>
-            <p>Total: ${calculateTotal()}</p>
+            <p>Total: ${calculateTotal().toFixed(2)}</p>
         </div>
     );
 }
