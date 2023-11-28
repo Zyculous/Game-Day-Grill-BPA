@@ -4,7 +4,7 @@ import Item from './item';
 import styles from './category.module.css';
 
 function Category({ category, items }) {
-    const [isCollapsed, setIsCollapsed] = useState(true);
+    const [isCollapsed, setIsCollapsed] = useState(false);
 
     const toggleCollapse = () => {
         setIsCollapsed(!isCollapsed);
