@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import {Dimensions} from 'react-native';
 import Item from './item';
 import styles from './category.module.css';
 
@@ -17,7 +16,7 @@ function Category({ category, items }) {
     let columns = [];
     
     function updateColumns() {
-        let nextCols = Math.max(1, Math.floor(Dimensions.get('window').width / minColWidth));
+        let nextCols = Math.max(1, Math.floor(window.innerWidth / minColWidth));
         if (nextCols === numCols) { return; }
         numCols = nextCols;
 

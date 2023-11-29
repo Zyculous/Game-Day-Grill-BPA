@@ -5,6 +5,8 @@ import styles from './navBar.module.css';
 
 function NavBar() {
     const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('account') !== null);
+    const [isSignedUp, setIsSignedUp] = useState(localStorage.getItem('account') !== null);
+
 
     function click(url) {
         return function(e) {
@@ -21,8 +23,8 @@ function NavBar() {
             <div onClick={click('/reservations')}>Make Reservations</div>
             {isLoggedIn ? (
                 <div onClick={click('/account')}>Account</div>
-            ) : (
-                <div onClick={click('/login')}>Login</div>
+            ) : isSignedUp ? (<div></div>) : (
+                <div onClick={click('/signup')}>Sign Up</div>
             )}
         </nav>
     );

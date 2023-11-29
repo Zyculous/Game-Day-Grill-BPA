@@ -6,7 +6,7 @@ import NavBar from './components/navbar/navBar.jsx';
 import Home from './components/home-page/home.jsx';
 import Cart from './components/cart/cart.jsx';
 import Reservations from './components/reservations/resMainPage.jsx';
-import Login from './components/login/login.jsx';
+import SignUp from './components/signUp/signUp.jsx';
 import Account from './components/account/account.jsx';
 
 function App() {
@@ -42,11 +42,11 @@ function App() {
             </>
         );
     }
-    function LoginPage() {
+    function SignUpPage() {
         return (
             <>
                 {NavBar()}
-                {<Login/>}
+                {<SignUp/>}
             </>
         );
     }
@@ -67,7 +67,7 @@ function App() {
                     <Route path="/menu" element={MenuPage()} />
                     <Route path="/cart" element={CartPage()} />
                     <Route path="/reservations" element={ResPage()} />
-                    <Route path="/login" element={LoginPage()} />
+                    <Route path="/signup" element={SignUpPage()} />
                     <Route path="/account" element={AccountPage()} />
                     <Route path="*" element={<h1>404</h1>} />
                 </Routes>

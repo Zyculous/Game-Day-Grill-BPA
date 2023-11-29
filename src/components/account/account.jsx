@@ -11,7 +11,7 @@ function Account() {
     }
     function handleLogout(e){
         localStorage.removeItem('account');
-        window.location.href = "/home";
+        window.location.href = "/signup";
         e.preventDefault();
     }
 

@@ -1,14 +1,15 @@
 import React from 'react';
+import styles from './signUp.module.css';
 
-function Login() {
+function SignUp() {
     function handleSubmit(e){
         localStorage.setItem('account', JSON.stringify({ email: e.target.email.value, password: e.target.password.value, firstName: e.target.firstName.value, lastName: e.target.lastName.value, address: e.target.address.value, phone: e.target.phone.value}));
         window.location.href = "/account";
         e.preventDefault();
     }
     return (
-        <div>
-            <h1>Login Page</h1>
+        <div className={styles.mainDiv}>
+            <h1>Sign Up</h1>
             <form onSubmit={handleSubmit}>
                 <label htmlFor='firstName'>First Name: </label>
                 <input type='text' id='firstName' name='firstName' />
@@ -34,4 +35,4 @@ function Login() {
     );
 };
 
-export default Login;
+export default SignUp;
