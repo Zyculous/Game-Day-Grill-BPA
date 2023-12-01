@@ -3,7 +3,8 @@
     background-color: lightgray;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 42px;
+    align-items: center;
+    height: 7vh;
     top: 0;
     left: 0;
     position: fixed;
@@ -12,15 +13,15 @@
     
 }
 .navbar > div{
-    display: block;
-    min-block-size: max-content;
-    padding: 10px;
+    display: flex;
     cursor: pointer;
     width: -webkit-fill-available;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
     &:hover {
         transition: all 0.2s ease-out;
-        box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-        top: -4px;
+        box-shadow: 0px 0px 0px rgba(38, 38, 38, 0.2);
         border: 1px solid #cccccc;
         background-color: white;
         min-width: min-content;

@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'Audiowide';
+    src: local('Audiowide'),
+        url('c:\Users\zande\OneDrive\Documents\Fonts\Audiowide-Regular.ttf') format('truetype');
+}
+
+.imageBackground{
+    background-image: url('/src/images/leaf_background.jpg');
+    background-repeat: repeat;
+    background-size:auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 30px;
+    position: relative; 
+    top: 7vh;/*equals navbar height*/
+    min-height: 93vh; /* 100vh - 7vh (navbar/top)  */
+    font-family: 'Audiowide';
+}
+.imageBackground > h1{
+    color: #b8d9af;
+    font-size: 40pt;
+}

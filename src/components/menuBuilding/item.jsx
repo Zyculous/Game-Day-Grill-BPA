@@ -33,7 +33,7 @@ function Item(props) {
     }
 
     return (
-        <div className={src ? styles.card:styles.smallCard} onClick={handleClick}>
+        <div className={styles.card} onClick={handleClick}>
             <div>
             {src && <img src={src} className={styles.img} alt= {name} />}
             <p className={styles.foodName}>{name}</p>

@@ -77,7 +77,7 @@ function ReservationPage(){
 
     return (
         <div className={styles.mainDiv}>
-            <h1>Reservation Page</h1>
+            <h1 style={{fontFamily:'Audiowide'}}>Reservation Page</h1>
             <form className={styles.mainDiv} onSubmit={handleSubmit}>
                 <input type="text" name="firstName" placeholder="First Name" defaultValue={firstName} required/>
                 <br></br>

@@ -1,16 +1,15 @@
-.card {
+.card{
     display: block;
     top: 0px;
     position: relative;
     max-width: 300px;
-    background-color: #f2f8f9;
-    border-radius: 4px;
-    padding: 32px 24px;
+    background-color: #4d4c4c;
+    border-radius: 40px;
     margin: 12px;
     text-decoration: none;
     z-index: 0;
     overflow: hidden;
-    border: 1px solid #f2f8f9;
+    border: 5px solid #85ae84;
     min-width: min-content;
     min-height: min-content;
     height: auto;
@@ -18,42 +17,23 @@
     transition: all 0.2s ease-out;
     box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
     top: -4px;
-    border: 1px solid #cccccc;
-    background-color: white;
+    border: 5px solid #da91aa;
+    background-color: #848282;
     min-width: min-content;
     min-height: min-content;
     }
 }
-.smallCard {
-    display: block;
-    top: 0px;
-    position: relative;
-    max-width: 300px;
-    background-color: #f2f8f9;
-    border-radius: 4px;
-    padding: 32px 24px;
-    margin: 12px;
-    text-decoration: none;
-    z-index: 0;
-    overflow: hidden;
-    border: 1px solid #f2f8f9;
-    min-width: min-content;
-    min-height: min-content;
-    &:hover {
-    transition: all 0.2s ease-out;
-    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
-    top: -4px;
-    border: 1px solid #cccccc;
-    background-color: white;
-    min-width: min-content;
-    min-height: min-content;
-    }
+.card:hover .btn {
+    background-color: #3e3d3d;
 }
-
+.card:hover .foodName {
+    color: #fefefe;
+}
 .foodName {
     font-size: 24px;
     font-weight: bolder;
     padding: 1rem .5rem;
+    color: #d27961;
 }
 
 .foodDesc {
@@ -61,10 +41,11 @@
     text-align: left;
     padding: 0rem .5rem;
     margin-bottom: 1rem;
+    color: #fefefe;
 }
 
 .btn {
-    background-color: #d85014;
+    background-color: #2c2c2c;
     color: #fefefe;
     font-weight: bold;
     text-transform: uppercase;
@@ -83,9 +64,17 @@
 }
 .popup {
     display: flex;
-    width: 100vw;
+    
     height: 33.3%;
-    background-color: #f2f8f9;
+    
+    background-image: url("/src/images/squiggle.jpg");
+    min-width: max-content;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+
     box-shadow: 0px 0px 2px 100vw rgb(38 38 38 / 75%);
     flex-direction: column;
     z-index: 999;

@@ -1,7 +1,13 @@
+@font-face {
+    font-family: 'Audiowide';
+    src: local('Audiowide'),
+        url('c:\Users\zande\OneDrive\Documents\Fonts\Audiowide-Regular.ttf') format('truetype');
+}
+
 .mainDiv {
     display: flex;
     position: relative;
-    top:2.5vw;
+    top: 2.5vw;
     flex-direction: column;
     justify-content: flex-start;
 }

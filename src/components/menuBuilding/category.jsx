@@ -57,7 +57,7 @@ function Category({ category, items }) {
 
     return (
         <div>
-            <div onClick={toggleCollapse} style={{ cursor: 'pointer' }} onResizeCapture={updateColumns}>
+            <div onClick={toggleCollapse} className={styles.sectionTitle} onResizeCapture={updateColumns}>
                 <h3>{category} {isCollapsed ? <span>&#x25B6;</span> : <span>&#x25BC;</span>}</h3>
             </div>
             {!isCollapsed && (

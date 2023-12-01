@@ -13,3 +13,8 @@
     display: flex;
     flex-flow: column wrap;
 }
+.sectionTitle{
+    cursor: pointer;
+    color: #b8d9af;
+    font-size: 18pt;
+}
