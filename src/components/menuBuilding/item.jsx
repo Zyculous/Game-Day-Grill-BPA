@@ -8,7 +8,6 @@ function Item(props) {
     const [open, setOpen] = useState(false);
     const [selectedSubtype, setSelectedSubtype] = useState(subtype ? subtype[0] : null);
     const [numInCart, setNumInCart] = useState(0);
-    const closeModal = () => setOpen(false);
 
     function addToCart() {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -18,9 +17,12 @@ function Item(props) {
         const newItem = { name, description, price, src, itemOptions, amount, selectedSubtype };
         const updatedCart = [...cartItems, newItem];
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-        closeModal();
+        toggleOptionsMenu();
         setNumInCart(numInCart + 1);
         localStorage.setItem('numInCart', JSON.stringify(numInCart));
+    }
+    function toggleOptionsMenu(){
+        setOpen(o => !o);
     }
 
     function handleClick(){
@@ -34,17 +36,15 @@ function Item(props) {
 
     return (
         <div className={styles.card} onClick={handleClick}>
-            <div>
-            {src && <img src={src} className={styles.img} alt= {name} />}
-            <p className={styles.foodName}>{name}</p>
-            <p className={styles.foodDesc}>{description}</p>
+            <div className={styles.overlay}>
+                <div>
+                {src && <img src={src} className={styles.img} alt= {name} />}
+                <p className={styles.foodName}>{name}</p>
+                <p className={styles.foodDesc}>{description}</p>
+                </div>
+                <button className={styles.btn}>{options ? `view item` : `add to cart`}</button>
             </div>
-            <button className={styles.btn}>{options ? `view item` : `add to cart`}</button>
-            {options ? <Popup open={open} onClose={closeModal} id={name} modal>
-                <div className={styles.popup}>
-                    <a className="close" onClick={closeModal}>
-                        &times;
-                    </a>
+            {options ? <div className={open ? styles.openMenu : styles.closeMenu} onClick={toggleOptionsMenu} id={name} modal>
                     {Object.entries(options).map(([option, choices]) => (
                         <Options
                             name={option}
@@ -65,8 +65,7 @@ function Item(props) {
                         </> : null}
                     </div>
                     <button onClick={addToCart}>Add to cart</button>
-                </div>
-            </Popup>: null}
+            </div>: null}
         </div>
     );
 }
