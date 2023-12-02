@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Audiowide';
     src: local('Audiowide'),
-        url('c:\Users\zande\OneDrive\Documents\Fonts\Audiowide-Regular.ttf') format('truetype');
+        url('/src/images/fonts/Audiowide-Regular.ttf') format('truetype');
 }
 
 .imageBackground{
