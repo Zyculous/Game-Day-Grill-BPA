@@ -17,19 +17,16 @@ function Item(props) {
         const newItem = { name, description, price, src, itemOptions, amount, selectedSubtype };
         const updatedCart = [...cartItems, newItem];
         localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-        toggleOptionsMenu();
+        handleClick();
         setNumInCart(numInCart + 1);
         localStorage.setItem('numInCart', JSON.stringify(numInCart));
-    }
-    function toggleOptionsMenu(){
-        setOpen(o => !o);
     }
 
     function handleClick(){
         localStorage.removeItem({name});
         if(options){
             setOpen(o => !o);
-        }else{
+                    }else{
             addToCart();
         }
     }
@@ -42,9 +39,9 @@ function Item(props) {
                 <p className={styles.foodName}>{name}</p>
                 <p className={styles.foodDesc}>{description}</p>
                 </div>
-                <button className={styles.btn}>{options ? `view item` : `add to cart`}</button>
+                {open ? null : <button className={styles.btn}>{options ? `view item` : `add to cart`}</button>}
             </div>
-            {options ? <div className={open ? styles.openMenu : styles.closeMenu} onClick={toggleOptionsMenu} id={name} modal>
+            {options ? <div className={open ? styles.openMenu : styles.closeMenu} onClick={handleClick} id={name} modal>
                     {Object.entries(options).map(([option, choices]) => (
                         <Options
                             name={option}
@@ -52,6 +49,7 @@ function Item(props) {
                             maxChecked={choices.max}
                             key={option}
                             itemName={name}
+                            
                         ></Options>
                     ))}
                     <div>
@@ -64,7 +62,7 @@ function Item(props) {
                             </select>
                         </> : null}
                     </div>
-                    <button onClick={addToCart}>Add to cart</button>
+                    <button className={styles.btn} onClick={addToCart}>Add to cart</button>
             </div>: null}
         </div>
     );
