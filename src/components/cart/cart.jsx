@@ -39,25 +39,28 @@ function Cart() {
 
     return (
         <div className={styles.mainDiv}>
-            <h2>Shopping Cart</h2>
-            <div className={styles.gridDiv}>
-                <div>Item Name</div>
-                <div>Item Options</div>
-                <div>Item Prices</div>
-                <div>Item Count</div>
-                <div>Remove Item</div>
+            <h2 style={{fontSize:'40pt', marginTop:0}} >Shopping Cart</h2>
+            <div className={styles.itemsDiv}>
+                <div className={styles.itemTitles}>
+                    <div className={styles.itemName}>Item Name</div>
+                    <div className={styles.itemOptions}>Item Options</div>
+                    <div className={styles.itemPrice}>Item Prices</div>
+                    <div className={styles.itemCount}>Item Count</div>
+                    <div className={styles.itemRemove}>Remove Item</div>
+                </div>
                 {items.map((item, index) => (
                     console.log(item),
-                    <>
-                        <h2>{item.selectedSubtype ? `${item.selectedSubtype} ${item.name}` : item.name}</h2>
-                        <div>
+                    <div className={styles.item}>
+                        <h2 className={styles.itemName}>{item.selectedSubtype ? `${item.selectedSubtype} ${item.name}` : item.name}</h2>
+                        <div className={styles.itemOptions}>
                             {item.itemOptions.map((option, index) => (
                                 <div key={index}>{option}</div>
                             ))}
                         </div>
-                        <p>${priceCalc(item).toFixed(2)}</p>
-                        <div>
+                        <p className={styles.itemPrice}>${priceCalc(item).toFixed(2)}</p>
+                        <div className={styles.itemCount}>
                             <button
+                                className={styles.btn}
                                 onClick={() => {
                                     const newItems = [...items];
                                     if(newItems[index].amount > 1) {
@@ -75,6 +78,7 @@ function Cart() {
                                 readOnly
                             />
                             <button
+                                className={styles.btn}
                                 onClick={() => {
                                     const newItems = [...items];
                                     if(newItems[index].amount >= 0){
@@ -86,11 +90,11 @@ function Cart() {
                                 +
                             </button>
                         </div>
-                        <button onClick={() => removeItem(index)}>Remove</button>
-                        </>
+                        <button className={styles.itemRemove} onClick={() => removeItem(index)}>Remove</button>
+                        </div>
                 ))}
                 </div>
-            <p>Total: ${calculateTotal().toFixed(2)}</p>
+            <p className={styles.total}>Total: ${calculateTotal().toFixed(2)}</p>
         </div>
     );
 }

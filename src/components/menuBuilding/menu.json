@@ -28,7 +28,8 @@
                 "price": [7.99],
                 "options": {
                     "Sauces":{
-                        "options": ["Marinara","None"]
+                        "options": ["Marinara","None"],
+                        "max": 1
                     }
                 }
             },

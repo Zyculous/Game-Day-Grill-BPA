@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import Popup from 'reactjs-popup';
 import Options from '../menuBuilding/options';
 import styles from "./item.module.css";
 
 function Item(props) {
     const { name, description, price, options, subtype, src } = props;
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const [selectedSubtype, setSelectedSubtype] = useState(subtype ? subtype[0] : null);
     const [numInCart, setNumInCart] = useState(0);
+
+
 
     function addToCart() {
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -15,24 +16,35 @@ function Item(props) {
         const amount = 1;
         
         const newItem = { name, description, price, src, itemOptions, amount, selectedSubtype };
-        const updatedCart = [...cartItems, newItem];
-        localStorage.setItem('cartItems', JSON.stringify(updatedCart));
-        handleClick();
-        setNumInCart(numInCart + 1);
-        localStorage.setItem('numInCart', JSON.stringify(numInCart));
+        let itemExists = false;
+
+
+        cartItems.forEach(element => {
+            if(element.name === newItem.name && element.selectedSubtype === newItem.selectedSubtype && JSON.stringify(element.itemOptions) === JSON.stringify(newItem.itemOptions)){
+                element.amount += 1;
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                itemExists = true;
+            }
+        });
+        if(!itemExists){
+            const updatedCart = [...cartItems, newItem];
+            localStorage.setItem('cartItems', JSON.stringify(updatedCart));
+            setNumInCart(numInCart + 1);
+            localStorage.setItem('numInCart', JSON.stringify(numInCart));
+        }
     }
 
     function handleClick(){
         localStorage.removeItem({name});
-        if(options){
+        if(options !== undefined){
             setOpen(o => !o);
-                    }else{
+        }else{
             addToCart();
         }
     }
 
     return (
-        <div className={styles.card} onClick={handleClick}>
+        <div className={styles.card} /*onClick={handleClick}*/>
             <div className={styles.overlay}>
                 <div>
                 {src && <img src={src} className={styles.img} alt= {name} />}
@@ -41,7 +53,13 @@ function Item(props) {
                 </div>
                 {open ? null : <button className={styles.btn}>{options ? `view item` : `add to cart`}</button>}
             </div>
-            {options ? <div className={open ? styles.openMenu : styles.closeMenu} onClick={handleClick} id={name} modal>
+            {options ? (
+                <div
+                    className={open ? styles.openMenu : styles.openMenu + " " + styles.closeMenu}
+                    /*onClick={handleClick}*/
+                    id={name}
+                    modal
+                >
                     {Object.entries(options).map(([option, choices]) => (
                         <Options
                             name={option}
@@ -49,21 +67,33 @@ function Item(props) {
                             maxChecked={choices.max}
                             key={option}
                             itemName={name}
-                            
                         ></Options>
                     ))}
                     <div>
-                    {subtype ? <>
-                        <label className={styles.subtype} htmlFor="subtype">Count:</label>
-                            <select className={styles.subtype} id="subtype" onChange={(e) => setSelectedSubtype(e.target.value)}>
-                                {subtype.map((c, i) => (
-                                    <option key={c} value={c}>{c}</option>
-                                ))}
-                            </select>
-                        </> : null}
+                        {subtype ? (
+                            <>
+                                <label className={styles.subtype} htmlFor="subtype">
+                                    Count:
+                                </label>
+                                <select
+                                    className={styles.subtype}
+                                    id="subtype"
+                                    onChange={(e) => setSelectedSubtype(e.target.value)}
+                                >
+                                    {subtype.map((c, i) => (
+                                        <option key={c} value={c}>
+                                            {c}
+                                        </option>
+                                    ))}
+                                </select>
+                            </>
+                        ) : null}
                     </div>
-                    <button className={styles.btn} onClick={addToCart}>Add to cart</button>
-            </div>: null}
+                    <button className={styles.btn} onClick={addToCart}>
+                        Add to cart
+                    </button>
+                </div>
+            ) : null}
         </div>
     );
 }

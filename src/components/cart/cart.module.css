@@ -1,53 +1,104 @@
+@font-face {
+    font-family: 'Audiowide';
+    src: local('Audiowide'),
+        url('/src/assets/fonts/Audiowide-Regular.ttf') format('truetype');
+}
+h2{
+    margin: 0.5rem;
+}
 .mainDiv {
     position: relative;
-    top: 2.5vw;
+    top: 7vh;
+    min-height: 93vh;
+    width: 100vw;
+    background-image: url('/src/assets/images/leaf_background.jpg');
+    background-repeat: repeat;
+    background-size:auto;
+    font-family: 'Audiowide';
+    color: aliceblue;
+    text-shadow: black 0.1em 0.1em 0.2em;
 }
-.gridDiv {
-    display: grid;
-    grid: 'N O P C R';
+.itemsDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.itemTitles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #4d4c4c;
+    border: 5px solid #85ae84;
+    border-radius: 10px;
+    align-items: center;
+    text-shadow: none;
+}
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #4d4c4c;
+    border: 5px solid #85ae84;
+    border-radius: 10px;
+    align-items: center;
+    text-shadow: none;
+}
+.item:hover{
+    background-color: #848282;
+    border: 5px solid #da91aa;
 }
 .itemName {
     display: flex;
-    width: -webkit-fill-available;
-    height: fit-content;
+    width: 20vw;
+    height: auto;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: #c7c7c7;
-    grid-area: 'N';
+    justify-content: center;
 }
 .itemOptions {
     display: flex;
-    width: -webkit-fill-available;
-    height: fit-content;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #c7c7c7;
-    grid-area: 'O';
+    width: 20vw;
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
 }
 .itemPrice {
     display: flex;
-    width: -webkit-fill-available;
-    height: fit-content;
+    width: 20vw;
+    height: auto;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: #c7c7c7;
-    grid-area: 'P';
+    justify-content: center;
 }
 .itemCount {
     display: flex;
-    width: -webkit-fill-available;
-    height: fit-content;
+    width: 20vw;
+    height: auto;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: #c7c7c7;
-    grid-area: 'C';
+    justify-content: center;
 }
 .itemRemove {
     display: flex;
-    width: -webkit-fill-available;
-    height: fit-content;
+    width: 20vw;
+    height: auto;
     flex-direction: row;
-    justify-content: space-between;
-    background-color: #c7c7c7;
-    grid-area: 'R';
+    justify-content: center;
+    background-color: #4d4c4c;
+    color: #fefefe;
+}
+.numInput{
+    max-width: 37px;
+    width: fit-content;
+    background-color: #4d4c4c;
+    color: #fefefe;
+}
+.btn{
+    background-color: #2c2c2c;
+    color: #fefefe;
+    font-weight: bold;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+.total{
+    font-size: 20pt;
 }
