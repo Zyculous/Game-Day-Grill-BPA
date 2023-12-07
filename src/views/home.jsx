@@ -1,9 +1,9 @@
-var React = require('react');
-var DefaultLayout = require('./layouts/default.jsx');
-var styles = require('./styles/home.module.css');
-var content = require('./content/home.json');
+import React from 'react';
+import DefaultLayout from './layouts/default.jsx';
+import styles from './styles/home.module.css';
+import content from './content/home.json';
 
-module.exports = () => (
+const Home = () => (
     <DefaultLayout title="Home">
         <div>
             <img className={styles.image} alt="Inside Grill" src="https://images.squarespace-cdn.com/content/v1/59950f7ee3df28b72af87b70/1675458881018-BBQRS2ID0V7UQFHS63C6/Bar_01.jpg?format=2500w"/>
@@ -21,3 +21,5 @@ module.exports = () => (
         </div>
     </DefaultLayout>
 );
+
+export default Home;

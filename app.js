@@ -1,14 +1,16 @@
-const express = require('express');
+import express from 'express';
+import { config } from 'dotenv';
+import expressReactViews from 'express-react-views';
 
-require('dotenv').config();
+config();
 
-const port = process.env.port || 3000;
+const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jsx');
-app.engine('jsx', require('express-react-views').createEngine());
+app.set('views', "./dist/views");
+app.set('view engine', 'js');
+app.engine('js', expressReactViews.createEngine());
 
 app.get('/home', (req, res) => res.render('home'));
 app.get('/', (req, res) => res.render('home'));

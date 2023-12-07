@@ -1,6 +1,6 @@
-var React = require('react');
+import React from 'react';
 
-module.exports = (props) => (
+const DefaultLayout = (props) => (
     <html lang="en">
         <head>
             <meta charSet="UTF-8"/>
@@ -10,3 +10,5 @@ module.exports = (props) => (
         <body>{props.children}</body>
     </html>
 );
+
+export default DefaultLayout;
