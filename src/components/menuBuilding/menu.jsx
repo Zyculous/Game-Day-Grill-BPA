@@ -1,5 +1,5 @@
 import React from 'react';
-import menu from './menu.json';
+import menu from '../../assets/json/menu.json';
 import Category from './category';
 import styles from './menu.module.css';
 
