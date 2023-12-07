@@ -4,7 +4,7 @@ import styles from "./item.module.css";
 
 function Item(props) {
     const { name, description, price, options, subtype, src } = props;
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [selectedSubtype, setSelectedSubtype] = useState(subtype ? subtype[0] : null);
     const [numInCart, setNumInCart] = useState(0);
 
@@ -18,6 +18,7 @@ function Item(props) {
         const newItem = { name, description, price, src, itemOptions, amount, selectedSubtype };
         let itemExists = false;
 
+        console.log(newItem);
 
         cartItems.forEach(element => {
             if(element.name === newItem.name && element.selectedSubtype === newItem.selectedSubtype && JSON.stringify(element.itemOptions) === JSON.stringify(newItem.itemOptions)){
@@ -40,11 +41,12 @@ function Item(props) {
             setOpen(o => !o);
         }else{
             addToCart();
+            setOpen(o => !o);
         }
     }
 
     return (
-        <div className={styles.card} /*onClick={handleClick}*/>
+        <div className={styles.card} onClick={handleClick}>
             <div className={styles.overlay}>
                 <div>
                 {src && <img src={src} className={styles.img} alt= {name} />}
@@ -55,8 +57,8 @@ function Item(props) {
             </div>
             {options ? (
                 <div
-                    className={open ? styles.openMenu : styles.openMenu + " " + styles.closeMenu}
-                    /*onClick={handleClick}*/
+                    className={open ? styles.openMenu : styles.closeMenu}
+                    onClick={handleClick}
                     id={name}
                     modal
                 >

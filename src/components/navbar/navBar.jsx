@@ -16,6 +16,7 @@ function NavBar() {
     }
 
     return (
+    <div className={styles.navbarBackdrop}>
         <nav className={styles.navbar}>
             <div onClick={click('/')}>Home</div>
             <div onClick={click('/menu')}>Menu</div>
@@ -27,6 +28,7 @@ function NavBar() {
                 <div onClick={click('/signup')}>Sign Up</div>
             )}
         </nav>
+    </div>
     );
 }
 export default NavBar;

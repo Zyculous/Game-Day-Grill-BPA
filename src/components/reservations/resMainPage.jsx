@@ -14,6 +14,12 @@ function ReservationPage(){
     const { email, firstName, lastName, address, phone } = account ? JSON.parse(account) : {};
 
     function makeReservation(reservation){
+        for (let i = 0; i < reservations.length; i++) {
+            if (reservations[i].dateTime === reservation.dateTime && reservations[i].location === reservation.location) {
+                alert("Reservation already exists at this time.");
+                return;
+            }
+        }
         setReservations([...reservations, reservation]);
     };
 
@@ -78,30 +84,32 @@ function ReservationPage(){
     return (
         <div className={styles.mainDiv}>
             <h1 style={{fontFamily:'Audiowide'}}>Reservation Page</h1>
-            <form className={styles.mainDiv} onSubmit={handleSubmit}>
-                <input type="text" name="firstName" placeholder="First Name" defaultValue={firstName} required/>
-                <br></br>
-                <input type="text" name="lastName" placeholder="Last Name" defaultValue={lastName} required/>
-                <br></br>
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <div className={styles.innerDiv}>
+                    <input className={styles.txtInput} type="text" name="firstName" placeholder="First Name" defaultValue={firstName} required/>
+                    <br></br>
+                    <input className={styles.txtInput} type="text" name="lastName" placeholder="Last Name" defaultValue={lastName} required/>
+                    <br></br>
 
-                <input type="datetime-local" name="dateTime" placeholder="Start Time" onChange={value => handleDate(value)} required/>
-                <br></br>
-                <input type="number" name="numPeople" placeholder="Number of People" required/>
-                <br></br>
-                <input type="email" name="email" placeholder="Email" defaultValue={email} required/>
-                <br></br>
-                <input type="phone" name="phoneNum" placeholder="Phone Number" defaultValue={phone} required/>
-                <br></br>
-                <label>Location: </label>
-                <select name='location' required>
-                    <option value="Downtown">Downtown</option>
-                    <option value="Uptown">Uptown</option>
-                    <option value="Midtown">Midtown</option>
-                </select>
-                <br></br>
-                <button type="submit">Make Reservation</button>
+                    <input className={styles.txtInput} type="datetime-local" name="dateTime" placeholder="Start Time" onChange={value => handleDate(value)} required/>
+                    <br></br>
+                    <input className={styles.txtInput} type="number" name="numPeople" placeholder="Number of People" required/>
+                    <br></br>
+                    <input className={styles.txtInput} type="email" name="email" placeholder="Email" defaultValue={email} required/>
+                    <br></br>
+                    <input className={styles.txtInput} type="phone" name="phoneNum" placeholder="Phone Number" defaultValue={phone} required/>
+                    <br></br>
+                    <label>Location: </label>
+                    <select className={styles.txtInput} name='location' required>
+                        <option value="Downtown">Downtown</option>
+                        <option value="Uptown">Uptown</option>
+                        <option value="Midtown">Midtown</option>
+                    </select>
+                    <br></br>
+                </div>
+                <button className={styles.btn} type="submit">Make Reservation</button>
             </form>
-            <div className={styles.mainDiv}>
+            <div className={styles.resList}>
                 {checkReservations()}
             </div>
         </div>

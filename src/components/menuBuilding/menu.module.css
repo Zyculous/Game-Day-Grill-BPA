@@ -14,7 +14,6 @@
     flex-direction: column;
     padding: 0 30px;
     position: relative; 
-    top: 7vh;/*equals navbar height*/
     min-height: 93vh; /* 100vh - 7vh (navbar/top)  */
     font-family: 'Audiowide';
 }

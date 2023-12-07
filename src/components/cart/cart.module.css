@@ -8,7 +8,6 @@ h2{
 }
 .mainDiv {
     position: relative;
-    top: 7vh;
     min-height: 93vh;
     width: 100vw;
     background-image: url('/src/assets/images/leaf_background.jpg');
@@ -39,11 +38,11 @@ h2{
     justify-content: space-between;
     background-color: #4d4c4c;
     border: 5px solid #85ae84;
+    border-top-right-radius: 10px;
     border-radius: 10px;
     align-items: center;
     text-shadow: none;
-}
-.item:hover{
+}::hover{
     background-color: #848282;
     border: 5px solid #da91aa;
 }
