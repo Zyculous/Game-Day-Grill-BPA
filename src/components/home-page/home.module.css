@@ -35,21 +35,21 @@
     position: relative;
     max-height: 20vh;
     padding: 0;
-    left: 40.5px;
+    left: 19%;
     margin: 0;
     z-index: 1;
 }
 .logoDiv:hover .rightLogo{
-    transform: translateX(40.5px);
+    transform: translateX(19%);
 }
 .logoDiv:hover .leftLogo {
-    transform: translateX(-40.5px);
+    transform: translateX(-19%);
 }
 .rightLogo {
     position: relative;
     max-height: 20vh;
     padding: 0;
-    right: 40.5px;
+    right: 19%;
     margin: 0;
     z-index: 1;
 }
