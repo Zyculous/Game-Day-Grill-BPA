@@ -95,6 +95,7 @@ function Cart() {
                 ))}
                 </div>
             <p className={styles.total}>Total: ${calculateTotal().toFixed(2)}</p>
+            <button className={styles.checkout}>Checkout</button>
         </div>
     );
 }

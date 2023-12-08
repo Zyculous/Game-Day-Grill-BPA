@@ -10,7 +10,7 @@ function SignUp() {
     return (
         <div className={styles.mainDiv}>
             <h1>Sign Up</h1>
-            <form onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <label htmlFor='firstName'>First Name: </label>
                 <input type='text' id='firstName' name='firstName' />
                 <br></br>
