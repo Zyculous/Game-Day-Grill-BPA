@@ -101,3 +101,21 @@ h2{
 .total{
     font-size: 20pt;
 }
+.checkout{
+    background-color: #4d4c4c;
+    color: #fefefe;
+    font-weight: bold;
+    text-transform: uppercase;
+    outline: none;
+    border:#85ae84 5px solid;
+    border-radius: 10px;
+    width: 15vw;
+    height: 6vh;
+    font-size: 20pt;
+    font-family: 'Audiowide';
+    cursor: pointer;
+    &:hover{
+        background-color: #848282;
+        border: 5px solid #da91aa;
+    }
+}
