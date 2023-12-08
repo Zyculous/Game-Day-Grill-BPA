@@ -3,7 +3,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import signup from "./routes/signup.mjs";
 
-dotenv.config({ path: "./.env" });
+dotenv.config();
 
 const PORT = 5050;
 const app = express();

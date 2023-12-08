@@ -7,7 +7,8 @@ const router = express.Router();
 router.get("/", async (req, res) => {
     router.post("/", async (req, res) => {
         let newDocument = {
-            name: req.body.name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             password: req.body.password
         };
         let collection = await db.collection("users");
