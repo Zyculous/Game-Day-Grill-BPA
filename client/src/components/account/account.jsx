@@ -18,12 +18,14 @@ function Account() {
     return (
         <div className={styles.mainDiv}>
             <h1>Account Page</h1>
-            <p>Email: {email}</p>
-            <p>Phone: {phone}</p>
-            <p>First Name: {firstName}</p>
-            <p>Last Name: {lastName}</p>
-            <p>Delivery address: {address}</p>
-            <button onClick={handleLogout}>Logout</button>
+            <div className={styles.innerDiv}>
+                <p>Email: {email}</p>
+                <p>Phone: {phone}</p>
+                <p>First Name: {firstName}</p>
+                <p>Last Name: {lastName}</p>
+                <p>Delivery address: {address}</p>
+                <button className={styles.button} onClick={handleLogout}>Logout</button>
+            </div>
         </div>
     );
 };
