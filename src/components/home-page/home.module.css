@@ -12,11 +12,13 @@
     overflow: hidden;
     justify-content: center;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .imgContent > h1 {
     font-size: 3em;
     color: white;
-    text-align: center;
     text-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
 }
 .content {
@@ -28,4 +30,38 @@
 }
 .content > p {
     margin: 10px;
+}
+.leftLogo {
+    position: relative;
+    max-height: 20vh;
+    padding: 0;
+    left: 40.5px;
+    margin: 0;
+    z-index: 1;
+}
+.logoDiv:hover .rightLogo{
+    transform: translateX(40.5px);
+}
+.logoDiv:hover .leftLogo {
+    transform: translateX(-40.5px);
+}
+.rightLogo {
+    position: relative;
+    max-height: 20vh;
+    padding: 0;
+    right: 40.5px;
+    margin: 0;
+    z-index: 1;
+}
+.middleLogo {
+    position: relative;
+    max-height: 20vh;
+    padding: 0;
+    margin: 0;
+}
+.logoDiv{
+    display: flex;
+    max-width: min-content;
+    padding: 0;
+    margin: 0;
 }

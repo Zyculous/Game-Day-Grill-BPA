@@ -8,6 +8,7 @@ import Cart from './components/cart/cart.jsx';
 import Reservations from './components/reservations/resMainPage.jsx';
 import SignUp from './components/signUp/signUp.jsx';
 import Account from './components/account/account.jsx';
+import Editor from './components/jsonEditor/editor.jsx';
 
 function App() {
         function HomePage() {
@@ -69,6 +70,7 @@ function App() {
                     <Route path="/reservations" element={ResPage()} />
                     <Route path="/signup" element={SignUpPage()} />
                     <Route path="/account" element={AccountPage()} />
+                    <Route path="/editor" element={<Editor></Editor>} />
                     <Route path="*" element={<h1>404</h1>} />
                 </Routes>
             </div>

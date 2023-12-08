@@ -1,0 +1,14 @@
+.menuContainer{
+    width: 75vw;
+}
+.sidebar {
+    width: 25vw;
+    flex-direction: column;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+}
+.nested{
+    margin-left: 5rem;
+}
