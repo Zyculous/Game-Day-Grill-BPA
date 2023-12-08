@@ -8,9 +8,9 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.set('views', "./dist/views");
-app.set('view engine', 'js');
-app.engine('js', expressReactViews.createEngine());
+app.set('views', "./src/views");
+app.set('view engine', 'jsx');
+app.engine('jsx', expressReactViews.createEngine());
 
 app.get('/home', (req, res) => res.render('home'));
 app.get('/', (req, res) => res.render('home'));
