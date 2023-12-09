@@ -1,3 +1,5 @@
+A demo website may be available at `https://gamedaygrill.site/`
+
 # How to build and start the Game Day Grill website
 
 ## Prerequisites 
