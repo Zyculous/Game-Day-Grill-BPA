@@ -1,26 +1,29 @@
 import express from "express";
 import db from "../db/conn.mjs";
 
-const router = express.Router();
-
-router.post("/", async (req, res) => {
+export async function login(username, password) {
     let collection = await db.collection("users");
 
-    let document = await collection.findOne( { username: req.body.username } );
+    let document = await collection.findOne( { username: username } );
 
     if ( document == null ) {
-        res.status(404).send("No account with this username");
-        return;
+        return { status: 404, data: "No account with this username" };
     }
 
-    if ( document.password != req.body.password ) {
-        res.status(401).send("Incorrect password!");
-        return;
+    if ( document.password != password ) {
+        return { status: 401, data: "Incorrect password!" };
     }
 
     delete document._id;
 
-    res.status(200).send(document);
+    return { status: 200, data: document };
+}
+
+const router = express.Router();
+
+router.post("/", async (req, res) => {
+    let loginRes = await login(req.body.username, req.body.password);
+    res.status(loginRes.status).send(loginRes.data);
 });
 
 export default router;

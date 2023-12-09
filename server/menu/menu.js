@@ -1,0 +1,1 @@
+import menuJson from './menu.json';

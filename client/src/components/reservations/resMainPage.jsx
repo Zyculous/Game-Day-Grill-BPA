@@ -1,31 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from './resMainPage.module.css';
 
+const getReservationsURL = "http://localhost:5050/reservations/getReservations";
+const createReservationURL = "http://localhost:5050/reservations/createReservation";
+const deleteReservationURL = "http://localhost:5050/reservations/deleteReservation";
+
 function ReservationPage(){
-    const [reservations, setReservations] = useState([]);
-    const [today, setToday] = useState(new Date());
-    const [formatToday, setFormatToday] = useState(today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear());
-    const [date, setDate] = useState(new Date());
+    const account = JSON.parse(localStorage.getItem('account'));
 
-    //account data
-    const account = localStorage.getItem('account');
-    const { email, firstName, lastName, address, phone } = account ? JSON.parse(account) : {};
+    let [reservations, setReservations] = useState([]);
 
-    function makeReservation(reservation){
-        for (let i = 0; i < reservations.length; i++) {
-            if (reservations[i].dateTime === reservation.dateTime && reservations[i].location === reservation.location) {
-                alert("Reservation already exists at this time.");
+    useEffect(() => {
+        if (account == null) {
+            return;
+        }
+
+        async function getReservations() {
+            let res = await fetch(getReservationsURL, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(account)
+            });
+
+            if (res.status != 200) {
+                alert(`Failed to load reservations with error: ${res.text}`);
                 return;
             }
-        }
-        setReservations([...reservations, reservation]);
-    };
 
-    function handleDate(v){
-        console.log(v);
-        let val = v.target.value;
+            setReservations(await res.json());
+        }
+
+        getReservations();
+
+        return;
+    }, [reservations.length]);
+
+    const [form, setForm] = useState({
+        name: "",
+        date: "",
+        people: 0,
+        location: "Downtown",
+    });
+     
+    function updateForm(value) {
+        return setForm((prev) => {
+            return { ...prev, ...value };
+        });
+    }
+
+    function handleDate(val){
         let time = val.split('T')[1];
         let hour = time.split(':')[0];
         let suffix;
@@ -42,43 +69,73 @@ function ReservationPage(){
         let month = date[1];
         let day = date[2];
         date = month + "/" + day + "/" + year;
-        setDate(date + time)
+        return date + time;
+    }
 
+    async function handleDelete(e, reservation) {
+        
+        let result = await fetch(deleteReservationURL, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({...account, _id: reservation._id })
+        });
+
+        if (result.status != 200) {
+            window.alert(await result.text());
+            return;
+        }
+
+        window.location.reload();
     }
 
     function checkReservations(){
-        if (reservations.length > 0) {
-            return (
-                <div>
-                    <h2>Existing Reservations:</h2>
-                    <ul>
-                        {reservations.map((reservation, index) => (
-                            <div>
-                                <li key={index}>{reservation.firstName} {reservation.lastName} - {reservation.dateTime} - {reservation.numPeople} - {reservation.location} - {reservation.phoneNum}</li>
-                                <button onClick={() => setReservations(reservations.filter((_, i) => i !== index))}>Cancel Reservation</button>
-                            </div>
-                        ))}
-                    </ul>
-                </div>
-            );
-        } else {
+        if (account == null) {
+            return <p>Sign into an account to see your reservations.</p>;
+        }
+
+        if (reservations.length == 0) {
             return <p>No reservations made yet.</p>;
         }
+
+        return (
+            <div>
+                <h2>Existing Reservations:</h2>
+                <ul>
+                    {reservations.map((reservation) => (
+                        <div>
+                            <li key={reservation._id}>{reservation.name} - {handleDate(reservation.date)} - {reservation.people} - {reservation.location}</li>
+                            <button onClick={(e) => handleDelete(e, reservation)}>Cancel Reservation</button>
+                        </div>
+                    ))}
+                </ul>
+            </div>
+        );
     };
 
-    function handleSubmit(e){
+    async function handleSubmit(e){
         e.preventDefault();
-        const reservation = {
-            firstName: e.target.elements.firstName.value,
-            lastName: e.target.elements.lastName.value,
-            todayDate: formatToday,
-            dateTime: date,
-            numPeople: e.target.elements.numPeople.value,
-            location: e.target.elements.location.value,
-            phoneNum: e.target.elements.phoneNum.value,
-        };
-        makeReservation(reservation);
-        e.target.reset();
+
+        if (account == null) {
+            alert('Please sign into an account to make a reservation.');
+            return;
+        }
+
+        let res = await fetch(createReservationURL, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({...account, ...form })
+        });
+
+        if (res.status != 204) {
+            window.alert(await res.text());
+            return;
+        }
+
+        window.location.reload();
     };
 
     return (
@@ -86,21 +143,17 @@ function ReservationPage(){
             <h1 style={{fontFamily:'Audiowide'}}>Reservation Page</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.innerDiv}>
-                    <input className={styles.txtInput} type="text" name="firstName" placeholder="First Name" defaultValue={firstName} required/>
+                    <label>Name: </label>
+                    <input onChange={(e) => updateForm({ name: e.target.value })} className={styles.txtInput} type='text' id='name' name='name' value={form.name} required/>
                     <br></br>
-                    <input className={styles.txtInput} type="text" name="lastName" placeholder="Last Name" defaultValue={lastName} required/>
+                    <label>Time & Date: </label>
+                    <input onChange={(e) => updateForm({ date: e.target.value })} className={styles.txtInput} type="datetime-local" name="dateTime" placeholder="Start Time" value={form.date} step={1} min={1} required/>
                     <br></br>
-
-                    <input className={styles.txtInput} type="datetime-local" name="dateTime" placeholder="Start Time" onChange={value => handleDate(value)} required/>
-                    <br></br>
-                    <input className={styles.txtInput} type="number" name="numPeople" placeholder="Number of People" required/>
-                    <br></br>
-                    <input className={styles.txtInput} type="email" name="email" placeholder="Email" defaultValue={email} required/>
-                    <br></br>
-                    <input className={styles.txtInput} type="phone" name="phoneNum" placeholder="Phone Number" defaultValue={phone} required/>
+                    <label>Number of People: </label>
+                    <input onChange={(e) => updateForm({ people: e.target.value })} className={styles.txtInput} type="text" inputMode='numeric' name="numPeople" value={form.people} pattern='\d{1,2}' title='up to two digit number' required/>
                     <br></br>
                     <label>Location: </label>
-                    <select className={styles.txtInput} name='location' required>
+                    <select onChange={(e) => updateForm({ location: e.target.value })} className={styles.txtInput} name='location' value={form.location} required>
                         <option value="Downtown">Downtown</option>
                         <option value="Uptown">Uptown</option>
                         <option value="Midtown">Midtown</option>

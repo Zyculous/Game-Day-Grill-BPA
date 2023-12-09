@@ -8,7 +8,7 @@ function SignUp() {
         username: "",
         email: "",
         password: "",
-      });
+    });
      
     function updateForm(value) {
         return setForm((prev) => {

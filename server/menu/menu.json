@@ -1,0 +1,232 @@
+{
+        "Appetizers": [
+            {
+                "name": "Chicken Wings", 
+                "description": "Crispy fried chicken wings tossed in your choice of sauce.",
+                "options": { 
+                    "Type": {
+                        "options": ["Bone-in", "Boneless"],
+                        "max": 1
+                    }, 
+                    "Sauces": {
+                        "options": ["BBQ", "Buffalo", "Teriyaki", "Plain","Honey Mustard", "Sweet Chili","Garlic Parmesan"],
+                        "max": 2
+                    }
+                },
+                "subtype": [6, 12, 18, 24],
+                "price": {
+                    "6": 7.99,
+                    "12": 13.99,
+                    "18": 19.99,
+                    "24": 24.99
+                },
+                "src": "https://st.depositphotos.com/1692343/2350/i/600/depositphotos_23507259-stock-photo-hot-and-spicey-buffalo-chicken.jpg"
+            },
+            {
+                "name": "Mozzarella Sticks",
+                "description": "Breaded mozzarella sticks served with marinara sauce.",
+                "price": [7.99],
+                "options": {
+                    "Sauces":{
+                        "options": ["Marinara","None"],
+                        "max": 1
+                    }
+                },
+                "src": "https://st2.depositphotos.com/1373322/7158/i/600/depositphotos_71588505-stock-photo-hot-fried-cheese-on-a.jpg"
+            },
+            {
+                "name": "Loaded Fries",
+                "description": "Crispy fries topped with melted cheese, bacon, and green onions.",
+                "price": [8.99],
+                "options":{
+                    "Toppings": {
+                        "options": ["No Cheese", "No Bacon", "No Green Onions"],
+                        "max": 3
+                    }
+                },
+                "src": "https://st5.depositphotos.com/3210553/63890/i/600/depositphotos_638900924-stock-photo-crispy-french-fries-loaded-bacon.jpg"
+            },
+            {
+                "name": "Chips and Dip",
+                "description": "Tortilla chips served with a dipping sauce.",
+                "price": [6.99],
+                "options":{ 
+                    "Sauces": {
+                        "options": ["No Salsa","Guacamole","Queso","None"],
+                        "max": 3
+                    }
+                },
+                "src":"https://st4.depositphotos.com/13349494/29102/i/600/depositphotos_291023390-stock-photo-close-view-mexican-corn-delicious.jpg"
+            },
+            {
+                "name": "Fried Pickles",
+                "description": "Breaded and fried pickle chips served with your choice of sauce.",
+                "price": [7.99],
+                "options":{
+                    "Sauces": {
+                        "options": ["Ranch", "Honey Mustard", "Southwestern Ranch", "Blue Cheese", "None"],
+                        "max:": 2
+                    }
+                },
+                "src": "https://st.depositphotos.com/1692343/4666/i/600/depositphotos_46666867-stock-photo-delicious-battered-fried-pickles.jpg"
+            }
+        ],
+        "Entrees": [
+            {
+                "name": "Grilled Chicken Sandwich",
+                "description": "Grilled chicken breast topped with lettuce, tomato, onion, and mayo on a toasted bun.",
+                "price": [11.99],
+                "options":{
+                    "Toppings":{
+                        "options": ["No Lettuce", "No Tomato", "No Mayo", "No Onion"],
+                        "max": 4
+                    }
+                },
+                "src":"https://st2.depositphotos.com/1006753/11349/i/600/depositphotos_113491026-stock-photo-grilled-chicken-sandwich.jpg"
+            },
+            {
+                "name": "BBQ Ribs",
+                "description": "Slow-cooked pork ribs smothered in BBQ sauce.",
+                "price": [16.99],
+                "options":{
+                    "Sauces":{
+                        "options": ["BBQ","Hot BBQ", "None"],
+                        "max": 1
+                    }
+                },
+                "src": "https://static7.depositphotos.com/1105053/725/i/600/depositphotos_7257554-stock-photo-bbq-ribs-with-toasted-bread.jpg"
+            },
+            {
+                "name": "Fajitas",
+                "description": "Sizzling fajitas served with peppers, onions, and all the fixings.",
+                "options":{
+                    "Toppings":{
+                        "options": ["No Peppers", "No Onions", "No Sour Cream", "No Guacamole", "No Pico", "None"],
+                        "max": 5
+                    }
+                },
+                "price": {
+                    "Steak": 20.99,
+                    "Chicken": 18.99,
+                    "Shrimp": 20.99,
+                    "Veggie": 17.99
+                },
+                "subtype": ["Steak","Chicken","Shrimp","Veggie"],
+                "src": "https://st.depositphotos.com/1692343/4603/i/600/depositphotos_46031443-stock-photo-homemade-chicken-fajitas-with-vegetables.jpg"
+            },
+            {
+                "name": "Cheeseburger",
+                "description":"1/2 lb. burger topped with cheese, lettuce, tomato, and onion on a toasted bun.",
+                "price": [12.99],
+                "options":{
+                    "Toppings":{
+                        "options": ["No Cheese", "No Lettuce", "No Tomato", "No Onion"],
+                        "max": 5
+                    },
+                    "Sauces":{
+                        "options": ["BBQ", "Ketchup", "Mustard", "Mayo", "None"],
+                        "max": 1
+                    }
+                },
+                "src":"https://st.depositphotos.com/1328914/3959/i/600/depositphotos_39598033-stock-photo-burger-with-sesame-bun-and.jpg"
+            },
+            {
+                "name": "Personal Pizza",
+                "description": "Personal 9\" pizza with your choice of toppings.",
+                "price": [10.99],
+                "options":{
+                    "Toppings":{
+                        "options": ["Pepperoni","Sausage","Bacon","Chicken","Mushrooms","Onions","Peppers","None"],
+                        "max": 7
+                    },
+                    "Sauces":{
+                        "options": ["Marinara", "Alfredo", "BBQ", "None"],
+                        "max": 1
+                    }
+                },
+                "src":"https://st4.depositphotos.com/1376117/28332/i/600/depositphotos_283325720-stock-photo-oven-baked-pepperoni-pizza.jpg"
+            }
+        ],
+        "Drinks": [
+            {
+                "name": "Coke",
+                "price": [2.99]
+            },
+            {
+                "name": "Sprite",
+                "price": [2.99]
+            },
+            {
+                "name": "Dr. Pepper",
+                "price": [2.99]
+            },
+            {
+                "name": "Diet Coke",
+                "price": [2.99]
+            },
+            {
+                "name": "Root Beer",
+                "price": [2.99]
+            },
+            {
+                "name": "Mountain Dew",
+                "price": [2.99]
+            },
+            {
+                "name": "Tea",
+                "options": {
+                    "Sweetness": {
+                        "options": ["Sweet", "Unsweet", "Half and Half"],
+                        "max": 1
+                    }
+                },
+                "price": [2.99]
+            },
+            {
+                "name": "Lemonade",
+                "price": [2.99]
+            },
+            {
+                "name": "Coffee",
+                "price": [2.99]
+            },
+            {
+                "name": "Hot Tea",
+                "price": [2.99]
+            },
+            {
+                "name": "Hot Chocolate",
+                "price": [2.99]
+            },
+            {
+                "name": "Water",
+                "price": [0.99]
+            }
+        ],
+        "Beers": [
+            {
+                "name": "Bud Light",
+                "price": [4.99]
+            },
+            {
+                "name": "Blue Moon",
+                "price": [5.99]
+            },
+            {
+                "name": "IPA",
+                "price": [6.99]
+            },
+            {
+                "name": "Stella Artois",
+                "price": [5.99]
+            },
+            {
+                "name": "Guinness",
+                "price": [6.99]
+            },
+            {
+                "name": "Heineken",
+                "price": [5.99]
+            }
+        ]
+}
