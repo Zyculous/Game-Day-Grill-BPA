@@ -20,7 +20,7 @@
                     "18": 19.99,
                     "24": 24.99
                 },
-                "src": "https://www.allrecipes.com/thmb/Hl5oNkpyhlT71h0H2GmHuMmwCZg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/ALR-187822-baked-chicken-wings-2x1-5daa014314d34d62bfd9908009a6fa2a.jpg"
+                "src": "https://st.depositphotos.com/1692343/2350/i/600/depositphotos_23507259-stock-photo-hot-and-spicey-buffalo-chicken.jpg"
             },
             {
                 "name": "Mozzarella Sticks",
@@ -31,7 +31,8 @@
                         "options": ["Marinara","None"],
                         "max": 1
                     }
-                }
+                },
+                "src": "https://st2.depositphotos.com/1373322/7158/i/600/depositphotos_71588505-stock-photo-hot-fried-cheese-on-a.jpg"
             },
             {
                 "name": "Loaded Fries",
@@ -42,7 +43,8 @@
                         "options": ["No Cheese", "No Bacon", "No Green Onions"],
                         "max": 3
                     }
-                }
+                },
+                "src": "https://st5.depositphotos.com/3210553/63890/i/600/depositphotos_638900924-stock-photo-crispy-french-fries-loaded-bacon.jpg"
             },
             {
                 "name": "Chips and Dip",
@@ -53,10 +55,11 @@
                         "options": ["No Salsa","Guacamole","Queso","None"],
                         "max": 3
                     }
-                }
+                },
+                "src":"https://st4.depositphotos.com/13349494/29102/i/600/depositphotos_291023390-stock-photo-close-view-mexican-corn-delicious.jpg"
             },
             {
-                "name": "Fried Pickels",
+                "name": "Fried Pickles",
                 "description": "Breaded and fried pickle chips served with your choice of sauce.",
                 "price": [7.99],
                 "options":{
@@ -64,20 +67,22 @@
                         "options": ["Ranch", "Honey Mustard", "Southwestern Ranch", "Blue Cheese", "None"],
                         "max:": 1
                     }
-                }
+                },
+                "src": "https://st.depositphotos.com/1692343/4666/i/600/depositphotos_46666867-stock-photo-delicious-battered-fried-pickles.jpg"
             }
         ],
         "Entrees": [
             {
                 "name": "Grilled Chicken Sandwich",
-                "description": "Grilled chicken breast topped with lettuce, tomato, and mayo on a toasted bun.",
+                "description": "Grilled chicken breast topped with lettuce, tomato, onion, and mayo on a toasted bun.",
                 "price": [11.99],
                 "options":{
                     "Toppings":{
-                        "options": ["No Lettuce", "No Tomato", "No Mayo"],
-                        "max": 3
+                        "options": ["No Lettuce", "No Tomato", "No Mayo", "No Onion"],
+                        "max": 4
                     }
-                }
+                },
+                "src":"https://st2.depositphotos.com/1006753/11349/i/600/depositphotos_113491026-stock-photo-grilled-chicken-sandwich.jpg"
             },
             {
                 "name": "BBQ Ribs",
@@ -85,10 +90,11 @@
                 "price": [16.99],
                 "options":{
                     "Sauces":{
-                        "options": ["BBQ","None"],
+                        "options": ["BBQ","Hot BBQ", "None"],
                         "max": 1
                     }
-                }
+                },
+                "src": "https://static7.depositphotos.com/1105053/725/i/600/depositphotos_7257554-stock-photo-bbq-ribs-with-toasted-bread.jpg"
             },
             {
                 "name": "Fajitas",
@@ -105,7 +111,8 @@
                     "Shrimp": 20.99,
                     "Veggie": 17.99
                 },
-                "subtype": ["Steak","Chicken","Shrimp","Veggie"]
+                "subtype": ["Steak","Chicken","Shrimp","Veggie"],
+                "src": "https://st.depositphotos.com/1692343/4603/i/600/depositphotos_46031443-stock-photo-homemade-chicken-fajitas-with-vegetables.jpg"
             },
             {
                 "name": "Cheeseburger",
@@ -120,7 +127,8 @@
                         "options": ["BBQ", "Ketchup", "Mustard", "Mayo", "None"],
                         "max": 1
                     }
-                }
+                },
+                "src":"https://st.depositphotos.com/1328914/3959/i/600/depositphotos_39598033-stock-photo-burger-with-sesame-bun-and.jpg"
             },
             {
                 "name": "Personal Pizza",
@@ -135,10 +143,11 @@
                         "options": ["Marinara", "Alfredo", "BBQ", "None"],
                         "max": 1
                     }
-                }
+                },
+                "src":"https://st4.depositphotos.com/1376117/28332/i/600/depositphotos_283325720-stock-photo-oven-baked-pepperoni-pizza.jpg"
             }
         ],
-        "Sodas": [
+        "Drinks": [
             {
                 "name": "Coke",
                 "price": [2.99]
@@ -162,6 +171,36 @@
             {
                 "name": "Mountain Dew",
                 "price": [2.99]
+            },
+            {
+                "name": "Tea",
+                "options": {
+                    "Sweetness": {
+                        "options": ["Sweet", "Unsweet", "Half and Half"],
+                        "max": 1
+                    }
+                },
+                "price": [2.99]
+            },
+            {
+                "name": "Lemonade",
+                "price": [2.99]
+            },
+            {
+                "name": "Coffee",
+                "price": [2.99]
+            },
+            {
+                "name": "Hot Tea",
+                "price": [2.99]
+            },
+            {
+                "name": "Hot Chocolate",
+                "price": [2.99]
+            },
+            {
+                "name": "Water",
+                "price": [0.99]
             }
         ],
         "Beers": [
@@ -188,33 +227,6 @@
             {
                 "name": "Heineken",
                 "price": [5.99]
-            }
-        ],
-        "Cocktails": [
-            {
-                "name": "Margarita",
-                "description": "Tequila, lime juice, and triple sec.",
-                "price": [8.99]
-            },
-            {
-                "name": "Old Fashioned",
-                "description": "Bourbon, sugar, bitters, and orange peel.",
-                "price": [10.99]
-            },
-            {
-                "name": "Moscow Mule",
-                "description": "Vodka, lime juice, and ginger beer.",
-                "price": [9.99]
-            },
-            {
-                "name": "Mojito",
-                "description": "White rum, lime juice, sugar, mint, and club soda.",
-                "price": [9.99]
-            },
-            {
-                "name": "Martini",
-                "description": "Gin and dry vermouth.",
-                "price": [10.99]
             }
         ]
 }

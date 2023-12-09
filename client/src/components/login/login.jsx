@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './login.module.css';
 
 function Login() {
     function handleSubmit(e){
@@ -7,29 +8,19 @@ function Login() {
         e.preventDefault();
     }
     return (
-        <div className={styles.mainDiv}>
-            <h1>Sign Up</h1>
-            <form className={styles.form} onSubmit={handleSubmit}>
-                <label htmlFor='firstName'>First Name: </label>
-                <input className={styles.txtInput} type='text' id='firstName' name='firstName' />
-                <br></br>
-                <label htmlFor='lastName'>Last Name: </label>
-                <input className={styles.txtInput} type='text' id='lastName' name='lastName' />
-                <br></br>
-                <label htmlFor='address'>Address: </label>
-                <input className={styles.txtInput} type='text' id='address' name='address' />
-                <br></br>
+        <div className={style.mainDiv}>
+            <h1>Login</h1>
+            <form className={style.form} onSubmit={handleSubmit}>
                 <label htmlFor="email">Email:</label>
-                <input className={styles.txtInput} type="text" id="email" name="email" />
-                <br></br>
-                <label htmlFor='phone'>Phone Number: </label>
-                <input className={styles.txtInput} type='text' id='phone' name='phone' />
+                <input className={style.txtInput} type="text" id="email" name="email" />
                 <br></br>
                 <label htmlFor="password">Password:</label>
-                <input className={styles.txtInput} type="password" id="password" name="password" />
+                <input className={style.txtInput} type="password" id="password" name="password" />
                 <br></br>
-                <button className={styles.button} type="submit">Login</button>
+                <button className={style.button} type="submit">Login</button>
             </form>
+            <h2>Need an account?</h2>
+            <button className={style.signup} onClick={() => window.location.href = "/signup"}>Sign Up</button>
         </div>
     );
 };

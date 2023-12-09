@@ -11,14 +11,13 @@ function Item(props) {
 
 
     function addToCart() {
+        setOpen(o => !o);
         const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
         const itemOptions = JSON.parse(localStorage.getItem({name})) || [];
         const amount = 1;
         
         const newItem = { name, description, price, src, itemOptions, amount, selectedSubtype };
         let itemExists = false;
-
-        console.log(newItem);
 
         cartItems.forEach(element => {
             if(element.name === newItem.name && element.selectedSubtype === newItem.selectedSubtype && JSON.stringify(element.itemOptions) === JSON.stringify(newItem.itemOptions)){
@@ -46,9 +45,9 @@ function Item(props) {
     }
 
     return (
-        <div className={styles.card} onClick={handleClick}>
-            <div className={styles.overlay}>
-                <div>
+        <div className={styles.card} >
+            <div className={styles.overlay} >
+                <div onClick={handleClick}>
                 {src && <img src={src} className={styles.img} alt= {name} />}
                 <p className={styles.foodName}>{name}</p>
                 <p className={styles.foodDesc}>{description}</p>
@@ -58,9 +57,7 @@ function Item(props) {
             {options ? (
                 <div
                     className={open ? styles.openMenu : styles.closeMenu}
-                    onClick={handleClick}
                     id={name}
-                    modal
                 >
                     {Object.entries(options).map(([option, choices]) => (
                         <Options

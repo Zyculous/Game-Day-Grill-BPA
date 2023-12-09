@@ -42,9 +42,6 @@ h2{
     border-radius: 10px;
     align-items: center;
     text-shadow: none;
-}::hover{
-    background-color: #848282;
-    border: 5px solid #da91aa;
 }
 .itemName {
     display: flex;
@@ -109,7 +106,7 @@ h2{
     outline: none;
     border:#85ae84 5px solid;
     border-radius: 10px;
-    width: 15vw;
+    min-width: fit-content;
     height: 6vh;
     font-size: 20pt;
     font-family: 'Audiowide';

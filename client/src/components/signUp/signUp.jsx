@@ -29,8 +29,10 @@ function SignUp() {
                 <label htmlFor="password">Password:</label>
                 <input className={styles.txtInput} type="password" id="password" name="password" />
                 <br></br>
-                <button className={styles.button} type="submit">Login</button>
+                <button className={styles.button} type="submit">Sign Up</button>
             </form>
+            <h2>Already have an account?</h2>
+            <button className={styles.login} onClick={() => window.location.href = "/login"}>Login</button>
         </div>
     );
 };
