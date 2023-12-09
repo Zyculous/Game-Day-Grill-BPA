@@ -23,7 +23,7 @@
 }
 .content {
     background-color: rgb(188, 186, 186);
-    box-shadow: 0px -20px 36px 132px rgb(38 38 38 / 69%);
+    box-shadow: 0px -20px 36px 50px rgb(38 38 38 / 69%);
     position: absolute;
     z-index: 1;
     top: 100%;
@@ -33,35 +33,54 @@
 }
 .leftLogo {
     position: relative;
-    max-height: 20vh;
+    max-height: 30vh;
     padding: 0;
-    left: 4.5vw;
+    left: 20%;
+    animation: backController 1s 1 forwards;
+    animation-timing-function: linear;
+    animation-delay: 1s;
     margin: 0;
-    z-index: 1;
-}
-.logoDiv:hover .rightLogo{
-    transform: translateX(4.2vw);
-}
-.logoDiv:hover .leftLogo {
-    transform: translateX(-4.5vw);
+    z-index: 5;
 }
 .rightLogo {
     position: relative;
-    max-height: 20vh;
+    max-height: 30vh;
     padding: 0;
-    right: 4.5vw;
+    right: 20%;
+    animation: spreadController 1s 1 forwards;
+    animation-timing-function: linear;
+    animation-delay: 1s;
     margin: 0;
-    z-index: 1;
+    z-index: 5;
 }
 .middleLogo {
     position: relative;
-    max-height: 20vh;
+    max-height: 30vh;
     padding: 0;
     margin: 0;
+    z-index: 0;
+}
+@keyframes spreadController {
+    100%{
+        transform: translateX(60%);
+    }
+}
+@keyframes backController {
+    100%{
+        transform: translateX(-68%);
+    }  
 }
 .logoDiv{
     display: flex;
     max-width: min-content;
     padding: 0;
     margin: 0;
+}
+.logoText {
+    z-index: 3;
+    position: relative;
+    top: -60%;
+    font-size: 20pt;
+    font-family: 'Audiowide';
+    color: white;
 }

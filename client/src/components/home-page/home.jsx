@@ -9,21 +9,22 @@ import middle from '../../assets/images/middle_logo.png';
 function Home() {
     return (
         <div>
-            <img className={styles.image} alt="Inside Grill" src= {bar} />
+            <img className={styles.image} alt="Inside Grill" src= "https://images.squarespace-cdn.com/content/v1/5a8a22c59f8dce86ccc25373/1664507643739-KDQXDM3VVU7LTWCQRKW5/AM+LKM+Opening-29.jpg" />
             <div className={styles.imgContent}>
-                <h1>Game Day </h1>
                 <div className={styles.logoDiv}>
                     <img className={styles.leftLogo} src={left}></img>
-                    <img className={styles.middleLogo} src={middle}></img>
+                    <div>
+                        <img className={styles.middleLogo} src={middle}></img>
+                        <p className={styles.logoText}>Game Day <br></br>Bar & Grill</p>
+                    </div>
                     <img className={styles.rightLogo} src={right}></img>
                 </div>
-                <h1>Grill</h1>
             </div>
             <div className={styles.content}>
                 <HomeCard title="About Us" 
-                subtitle="At Game Day Grill, we're all about good food, good drinks, and good times." 
-                text="Whether you're here to watch the game, catch up with friends, or just grab a bite to eat, we've got you covered. So come on in, pull up a chair, and let us take care of the rest." 
-                src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTUqtkZ7VSUGtjDUcM_Si41nIOkBM4NyOCfmEtc4d4DT79v2kyP" 
+                subtitle="At Game Day Grill, we're all about good food, good games, and good times." 
+                text="Game Day Grill was founded by three friends who love the atmosphere of both arcades and sports bars, so one had the brilliant idea to merge the two into one place: Game Day Grill. Welcome to a world of video games, sports, and delicious food, as presented by Indiana BPA members Lukin Uhte, Zander Inderstrodt, and Charles Frederick of Richmond High School in Richmond, Indiana in the year 2023-2024. Here, you'll find arcade machines, lots of TVs displaying your favorite sports, and, of course, our scrumptious signature meals, appetizers, and desserts, We hope to see you stop by! " 
+                src="https://st2.depositphotos.com/2332949/7873/i/600/depositphotos_78735650-stock-photo-game-arcade-machine-mock-up.jpg" 
                 imgPos="left" imgAlt="outside gameday bar and grill"></HomeCard>
             </div>
         </div>

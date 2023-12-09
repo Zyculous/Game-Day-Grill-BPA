@@ -9,6 +9,7 @@ import Reservations from './components/reservations/resMainPage.jsx';
 import SignUp from './components/signUp/signUp.jsx';
 import Account from './components/account/account.jsx';
 import Editor from './components/jsonEditor/editor.jsx';
+import Login from './components/login/login.jsx';
 
 function App() {
         function HomePage() {
@@ -51,6 +52,14 @@ function App() {
             </>
         );
     }
+    function LoginPage() {
+        return (
+            <>
+                {NavBar()}
+                {<Login/>}
+            </>
+        );
+    }
     function AccountPage() {
         return (
             <>
@@ -69,6 +78,7 @@ function App() {
                     <Route path="/cart" element={CartPage()} />
                     <Route path="/reservations" element={ResPage()} />
                     <Route path="/signup" element={SignUpPage()} />
+                    <Route path="/login" element={LoginPage()} />
                     <Route path="/account" element={AccountPage()} />
                     <Route path="/editor" element={<Editor></Editor>} />
                     <Route path="*" element={<h1>404</h1>} />

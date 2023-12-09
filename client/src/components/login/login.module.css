@@ -16,8 +16,6 @@
     width: 100vw;
     color: aliceblue;
     align-items: center;
-    text-shadow: black 0.1em 0.1em 0.2em;
-
 }
 .mainDiv > h1 {
     font-size: 32pt;
@@ -60,7 +58,7 @@
 }::placeholder{
     color: aliceblue;
 }
-.login{
+.signup{
     background-color: #4d4c4c;
     color: #fefefe;
     font-weight: bold;

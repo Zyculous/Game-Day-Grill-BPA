@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './login.module.css';
 
 function Login() {
     function handleSubmit(e){
@@ -7,29 +8,19 @@ function Login() {
         e.preventDefault();
     }
     return (
-        <div>
-            <h1>Login Page</h1>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='firstName'>First Name: </label>
-                <input type='text' id='firstName' name='firstName' />
-                <br></br>
-                <label htmlFor='lastName'>Last Name: </label>
-                <input type='text' id='lastName' name='lastName' />
-                <br></br>
-                <label htmlFor='address'>Address: </label>
-                <input type='text' id='address' name='address' />
-                <br></br>
+        <div className={style.mainDiv}>
+            <h1>Login</h1>
+            <form className={style.form} onSubmit={handleSubmit}>
                 <label htmlFor="email">Email:</label>
-                <input type="text" id="email" name="email" />
-                <br></br>
-                <label htmlFor='phone'>Phone Number: </label>
-                <input type='text' id='phone' name='phone' />
+                <input className={style.txtInput} type="text" id="email" name="email" required/>
                 <br></br>
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" />
+                <input className={style.txtInput} type="password" id="password" name="password" required/>
                 <br></br>
-                <button type="submit">Login</button>
+                <button className={style.button} type="submit">Login</button>
             </form>
+            <h2>Need an account?</h2>
+            <button className={style.signup} onClick={() => window.location.href = "/signup"}>Sign Up</button>
         </div>
     );
 };
