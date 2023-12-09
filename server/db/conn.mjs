@@ -1,8 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const connectionString = process.env.MONGODB_URI || "";
-
-console.log(connectionString);
+const connectionString = process.env.MONGODB_URI || "no connection string";
 
 const client = new MongoClient(connectionString);
 

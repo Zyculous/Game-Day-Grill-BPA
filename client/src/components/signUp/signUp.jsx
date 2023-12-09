@@ -1,36 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './signUp.module.css';
 
+const submitURL = "http://localhost:5050/signup";
+
 function SignUp() {
-    function handleSubmit(e){
-        localStorage.setItem('account', JSON.stringify({ email: e.target.email.value, password: e.target.password.value, firstName: e.target.firstName.value, lastName: e.target.lastName.value, address: e.target.address.value, phone: e.target.phone.value}));
-        window.location.href = "/account";
+    const [form, setForm] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
+     
+    function updateForm(value) {
+        return setForm((prev) => {
+            return { ...prev, ...value };
+        });
+    }
+
+    async function handleSubmit(e){
         e.preventDefault();
+
+        let res = await fetch(submitURL, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({...form})
+        });
+
+        if (res.status != 204) {
+            window.alert(await res.text());
+            return;
+        }
+
+        localStorage.setItem('account', JSON.stringify({ 
+            email: form.email == "" ? null : form.email, 
+            password: form.password, 
+            username: form.username
+        }));
+        window.location.href = '/account';
+        
     }
     return (
         <div className={styles.mainDiv}>
             <h1>Sign Up</h1>
-            <form className={styles.form} onSubmit={handleSubmit} action='localhost:5050/signup' method='POST'>
-                <label htmlFor='firstName'>First Name: </label>
-                <input type='text' id='firstName' name='firstName' />
-                <br></br>
-                <label htmlFor='lastName'>Last Name: </label>
-                <input type='text' id='lastName' name='lastName' />
-                <br></br>
-                <label htmlFor='address'>Address: </label>
-                <input type='text' id='address' name='address' />
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <label htmlFor='username'>Username: </label>
+                <input onChange={(e) => updateForm({ username: e.target.value })} className={styles.txtInput} type='text' id='username' name='username' value={form.username} pattern='^[A-Za-z0-9]{4,16}$' title='4-16 alphanumeric characters' required/>
                 <br></br>
                 <label htmlFor="email">Email:</label>
-                <input type="text" id="email" name="email" />
-                <br></br>
-                <label htmlFor='phone'>Phone Number: </label>
-                <input type='text' id='phone' name='phone' />
+                <input onChange={(e) => updateForm({ email: e.target.value })} className={styles.txtInput} type="text" id="email" name="email" value={form.email} pattern='^[^\s]+[^\s]+\.[^\s]+$' title='is valid email format'/>
                 <br></br>
                 <label htmlFor="password">Password:</label>
-                <input type="password" id="password" name="password" />
+                <input onChange={(e) => updateForm({ password: e.target.value })} className={styles.txtInput} type="password" id="password" name="password" value={form.password} pattern='^[^\s]{8,}$' title='8 or more non-whitespace characters' required/>
                 <br></br>
-                <button type="submit">Login</button>
+                <button className={styles.button} type="submit">Sign Up</button>
             </form>
+            <h2>Already have an account?</h2>
+            <button className={styles.login} onClick={() => window.location.href = "/login"}>Login</button>
         </div>
     );
 };
