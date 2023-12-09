@@ -1,9 +1,7 @@
 import express from "express";
 import cors from "cors";
-import dotenv from "dotenv";
+import "./loadEnvironment.mjs";
 import signup from "./routes/signup.mjs";
-
-dotenv.config();
 
 const PORT = 5050;
 const app = express();
