@@ -4,14 +4,11 @@ import db from "../db/conn.mjs";
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-    console.log("Got Signup Request");
     let newDocument = {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password
     };
-
-    console.log(newDocument);
 
     if (!req.body.username.match('^[A-Za-z0-9]{4,16}$')) {
         res.status(400).send("Username does not match requirements");
@@ -32,6 +29,11 @@ router.post("/", async (req, res) => {
 
     if (await collection.findOne({ username: req.body.username })) {
         res.status(409).send("Username already taken");
+        return;
+    }
+
+    if (await collection.findOne({ email: req.body.email })) {
+        res.status(409).send("Email already in use");
         return;
     }
 

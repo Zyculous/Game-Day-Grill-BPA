@@ -44,14 +44,14 @@ function SignUp() {
         <div className={styles.mainDiv}>
             <h1>Sign Up</h1>
             <form className={styles.form} onSubmit={handleSubmit}>
-                <label htmlFor='username'>Usernname: </label>
-                <input onChange={(e) => updateForm({ username: e.target.value })} className={styles.txtInput} type='text' id='username' name='username' value={form.username} pattern='[A-Za-z0-9]{4,16}' title='4-16 alphanumeric characters' required/>
+                <label htmlFor='username'>Username: </label>
+                <input onChange={(e) => updateForm({ username: e.target.value })} className={styles.txtInput} type='text' id='username' name='username' value={form.username} pattern='^[A-Za-z0-9]{4,16}$' title='4-16 alphanumeric characters' required/>
                 <br></br>
                 <label htmlFor="email">Email:</label>
-                <input onChange={(e) => updateForm({ email: e.target.value })} className={styles.txtInput} type="text" id="email" name="email" value={form.email} pattern='[\S]+@[\S]+\.[\S]+' title='is valid email format'/>
+                <input onChange={(e) => updateForm({ email: e.target.value })} className={styles.txtInput} type="text" id="email" name="email" value={form.email} pattern='^[^\s]+[^\s]+\.[^\s]+$' title='is valid email format'/>
                 <br></br>
                 <label htmlFor="password">Password:</label>
-                <input onChange={(e) => updateForm({ password: e.target.value })} className={styles.txtInput} type="password" id="password" name="password" value={form.password} pattern='\S{8,}' title='8 or more non-whitespace characters' required/>
+                <input onChange={(e) => updateForm({ password: e.target.value })} className={styles.txtInput} type="password" id="password" name="password" value={form.password} pattern='^[^\s]{8,}$' title='8 or more non-whitespace characters' required/>
                 <br></br>
                 <button className={styles.button} type="submit">Sign Up</button>
             </form>
