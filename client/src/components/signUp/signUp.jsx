@@ -25,10 +25,6 @@ function SignUp() {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({...form})
-        })
-        .catch(err => {
-            window.alert(err);
-            return;
         });
 
         if (res.status != 204) {
