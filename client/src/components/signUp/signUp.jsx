@@ -12,22 +12,22 @@ function SignUp() {
             <h1>Sign Up</h1>
             <form className={styles.form} onSubmit={handleSubmit} action='localhost:5050/signup' method='POST'>
                 <label htmlFor='firstName'>First Name: </label>
-                <input className={styles.txtInput} type='text' id='firstName' name='firstName' />
+                <input className={styles.txtInput} type='text' id='firstName' name='firstName' required/>
                 <br></br>
                 <label htmlFor='lastName'>Last Name: </label>
-                <input className={styles.txtInput} type='text' id='lastName' name='lastName' />
+                <input className={styles.txtInput} type='text' id='lastName' name='lastName' required/>
                 <br></br>
                 <label htmlFor='address'>Address: </label>
-                <input className={styles.txtInput} type='text' id='address' name='address' />
+                <input className={styles.txtInput} type='text' id='address' name='address' required/>
                 <br></br>
                 <label htmlFor="email">Email:</label>
-                <input className={styles.txtInput} type="text" id="email" name="email" />
+                <input className={styles.txtInput} type="text" id="email" name="email" required/>
                 <br></br>
                 <label htmlFor='phone'>Phone Number: </label>
-                <input className={styles.txtInput} type='text' id='phone' name='phone' />
+                <input className={styles.txtInput} type='text' id='phone' name='phone' required/>
                 <br></br>
                 <label htmlFor="password">Password:</label>
-                <input className={styles.txtInput} type="password" id="password" name="password" />
+                <input className={styles.txtInput} type="password" id="password" name="password" required/>
                 <br></br>
                 <button className={styles.button} type="submit">Sign Up</button>
             </form>

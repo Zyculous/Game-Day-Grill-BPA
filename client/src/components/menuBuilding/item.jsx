@@ -52,7 +52,7 @@ function Item(props) {
                 <p className={styles.foodName}>{name}</p>
                 <p className={styles.foodDesc}>{description}</p>
                 </div>
-                {open ? null : <button className={styles.btn}>{options ? `view item` : `add to cart`}</button>}
+                {open ? null : <button onClick={handleClick} className={styles.btn}>{options ? `view item` : `add to cart`}</button>}
             </div>
             {options ? (
                 <div
