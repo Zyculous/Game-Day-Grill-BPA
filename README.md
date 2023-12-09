@@ -8,6 +8,12 @@ https://www.mongodb.com/try/download/community
 
 https://nodejs.org/en
 
+## MongoDB Setup
+
+Create a database named `gamedaygrill` with two collections `users` and `reservations`.
+
+You can optionally add `username` as a unique index in the `users` table.
+
 ## Setup
 
 Run `npi i` in both the `/client` and `/server` directories.
