@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './signUp.module.css';
 
-const submitURL = "http://localhost:5050/signup";
+const submitURL = "https://www.gamedaygrill.site/signup";
 
 function SignUp() {
     const [form, setForm] = useState({

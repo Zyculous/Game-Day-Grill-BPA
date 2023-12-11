@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from './login.module.css';
 
-const submitURL = "http://localhost:5050/login";
+const submitURL = "https://www.gamedaygrill.site:5050/login";
 
 function Login() {
 

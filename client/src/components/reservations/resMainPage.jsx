@@ -3,9 +3,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from './resMainPage.module.css';
 
-const getReservationsURL = "http://localhost:5050/reservations/getReservations";
-const createReservationURL = "http://localhost:5050/reservations/createReservation";
-const deleteReservationURL = "http://localhost:5050/reservations/deleteReservation";
+const getReservationsURL = "https://www.gamedaygrill.site/reservations/getReservations";
+const createReservationURL = "https://www.gamedaygrill.site/reservations/createReservation";
+const deleteReservationURL = "https://www.gamedaygrill.site/reservations/deleteReservation";
 
 function ReservationPage(){
     const account = JSON.parse(localStorage.getItem('account'));
