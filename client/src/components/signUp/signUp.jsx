@@ -9,7 +9,7 @@ function SignUp() {
         email: "",
         password: "",
     });
-     
+    
     function updateForm(value) {
         return setForm((prev) => {
             return { ...prev, ...value };
