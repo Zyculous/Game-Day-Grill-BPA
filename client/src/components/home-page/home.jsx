@@ -22,10 +22,21 @@ function Home() {
             </div>
             <div className={styles.content}>
                 <HomeCard title="About Us" 
-                subtitle="At Game Day Grill, we're all about good food, good games, and good times." 
-                text="Game Day Grill was founded by three friends who love the atmosphere of both arcades and sports bars, so one had the brilliant idea to merge the two into one place: Game Day Grill. Welcome to a world of video games, sports, and delicious food, as presented by Indiana BPA members Lukin Uhte, Zander Inderstrodt, and Charles Frederick of Richmond High School in Richmond, Indiana in the year 2023-2024. Here, you'll find arcade machines, lots of TVs displaying your favorite sports, and, of course, our scrumptious signature meals, appetizers, and desserts, We hope to see you stop by!"
-                src="https://st2.depositphotos.com/2332949/7873/i/600/depositphotos_78735650-stock-photo-game-arcade-machine-mock-up.jpg" 
-                imgPos="left" imgAlt="outside gameday bar and grill"></HomeCard>
+                    subtitle="At Game Day Grill, we're all about good food, good games, and good times." 
+                    text="Game Day Grill was founded by three friends who love the atmosphere of both arcades and sports bars, so one had the brilliant idea to merge the two into one place: Game Day Grill. Welcome to a world of video games, sports, and delicious food, as presented by Indiana BPA members Lukin Uhte, Zander Inderstrodt, and Charles Frederick of Richmond High School in Richmond, Indiana in the year 2023-2024. Here, you'll find arcade machines, lots of TVs displaying your favorite sports, and, of course, our scrumptious signature meals, appetizers, and desserts, We hope to see you stop by!"
+                    src="https://st2.depositphotos.com/2332949/7873/i/600/depositphotos_78735650-stock-photo-game-arcade-machine-mock-up.jpg" 
+                    imgPos="left" imgAlt="outside gameday bar and grill"
+                ></HomeCard>
+                <HomeCard title="Our Story"
+                    text="On January 12th of 2012, three friends waked out of an arcade desparate for wings and beer, so they merged their desires to invent a brand new market for people just like them!"
+                    src=""
+                    imgPos="right"
+                ></HomeCard>
+                <HomeCard title="Meet the Founders"
+                    text="Kyle Martinez, Alex Schwartz, and Chris Thompson are Earlham College graduates who studied business together, but upon their realization that they could take arcades and bars to the next level, they became chefs over night. Try their signature burgers!"
+                    src=""
+                    imgPos="left"
+                ></HomeCard>
             </div>
         </div>
     );
