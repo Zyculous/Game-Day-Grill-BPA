@@ -21,7 +21,7 @@ function Home() {
                 </div>
             </div>
             <div className={styles.content}>
-                <HomeCard title="About Us" 
+                <HomeCard title="About Us " 
                 subtitle="At Game Day Grill, we're all about good food, good games, and good times." 
                 text="Game Day Grill was founded by three friends who love the atmosphere of both arcades and sports bars, so one had the brilliant idea to merge the two into one place: Game Day Grill. Welcome to a world of video games, sports, and delicious food, as presented by Indiana BPA members Lukin Uhte, Zander Inderstrodt, and Charles Frederick of Richmond High School in Richmond, Indiana in the year 2023-2024. Here, you'll find arcade machines, lots of TVs displaying your favorite sports, and, of course, our scrumptious signature meals, appetizers, and desserts, We hope to see you stop by!"
                 src="https://st2.depositphotos.com/2332949/7873/i/600/depositphotos_78735650-stock-photo-game-arcade-machine-mock-up.jpg" 
