@@ -5,14 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "command": "cd server; npm start",
-            "name": "Start Server",
-            "request": "launch",
-            "type": "node-terminal"
-        },
-        {
-            "command": "cd client; npm start",
-            "name": "Start Client Server",
+            "command": "npm run dev",
+            "name": "Launch Development Server",
             "request": "launch",
             "type": "node-terminal"
         }

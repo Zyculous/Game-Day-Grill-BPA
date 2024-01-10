@@ -1,35 +1,35 @@
-A demo website may be available at `https://gamedaygrill.site/`
+# Vue Testing
 
-# How to build and start the Game Day Grill website
+This template should help get you started developing with Vue 3 in Vite.
 
-## Prerequisites 
+## Recommended IDE Setup
 
-Both MongoDB Community Edition and NodeJS must be installed to use this server.
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-https://www.mongodb.com/try/download/community
+## Customize configuration
 
-https://nodejs.org/en
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## MongoDB Setup
+## Project Setup
 
-Create a database named `gamedaygrill` with two collections `users` and `reservations`.
+```sh
+npm install
+```
 
-You can optionally add `username` as a unique index in the `users` table.
+### Compile and Hot-Reload for Development
 
-## Setup
+```sh
+npm run dev
+```
 
-Run `npi i` in both the `/client` and `/server` directories.
+### Compile and Minify for Production
 
-Create a file names `.env` in the `/server` directory. \
-Add an entry named `MONGODB_URI` to the `.env` file that matches your MongoDB connection URI. \
-Example: `MONGODB_URI="mongodb://localhost:27017/"`
+```sh
+npm run build
+```
 
-If the server will be accessed by another computer change the connection URLs in the client-side component files to a URL matching your domain or public IP.
+### Lint with [ESLint](https://eslint.org/)
 
-## Starting the Server
-
-If you are using this project in VSCode you can launch both launch profiles.
-
-If you are not using this project in VSCode you can run the following: \
-In the `/server` directory: `npm start` \
-In the `/client` directory: `npm build; npm start`
+```sh
+npm run lint
+```
