@@ -3,6 +3,8 @@ import homepageRouter from "./homepageRouter.js";
 import assetsRouter from "./assetsRouter.js";
 import path from "path";
 
+import process from "process";
+
 const port = process.env.PORT || 3000;
 const publicPath = path.join(path.resolve(), "public");
 
