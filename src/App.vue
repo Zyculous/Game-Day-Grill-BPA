@@ -23,13 +23,27 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <a href="#/home">Home</a> |
-  <a href="#/menu">Menu</a> |
-  <a href="#/about">About</a> |
-  <a href="#/non-existent-path">Broken Link</a>
-  <component :is="currentView" />
+  <div class="app">
+    <div class="navbar">
+      <a href="#/home">Home</a> |
+      <a href="#/menu">Menu</a> |
+      <a href="#/about">About</a> |
+      <a href="#/non-existent-path">Broken Link</a>
+    </div>
+    <component class="page" :is="currentView" />
+  </div>
 </template>
 
 <style scoped>
-
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.page{
+  margin: 0 auto;
+  padding: 2rem;
+}
 </style>
