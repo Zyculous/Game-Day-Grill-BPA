@@ -6,7 +6,7 @@
     "configurations": [
         {
             "command": "npm run dev",
-            "name": "Launch Development Server",
+            "name": "Launch Dev Server",
             "request": "launch",
             "type": "node-terminal"
         }
