@@ -2,13 +2,15 @@
 import HomePage from './components/HomePage.vue'
 import MenuPage from './components/MenuPage.vue'
 import NotFound from './components/NotFound.vue'  
+import AboutPage from './components/AboutPage.vue'
 
 import { ref, computed } from 'vue'
 
 
 const routes = {
   '/home': HomePage,
-  '/menu': MenuPage
+  '/menu': MenuPage,
+  '/about': AboutPage
 }
 
 const currentPath = ref(window.location.hash)
@@ -25,10 +27,9 @@ const currentView = computed(() => {
 <template>
   <div class="app">
     <div class="navbar">
-      <a href="#/home">Home</a> |
-      <a href="#/menu">Menu</a> |
-      <a href="#/about">About</a> |
-      <a href="#/non-existent-path">Broken Link</a>
+      <a class="link" href="#/home">Home</a> |
+      <a class="link" href="#/menu">Menu</a> |
+      <a class="link" href="#/about">About</a> |
     </div>
     <component class="page" :is="currentView" />
   </div>
@@ -41,9 +42,28 @@ const currentView = computed(() => {
   position: fixed;
   top: 0;
   width: 100%;
+  border-radius: 10px;
+  font-size: 25px;
+
+}
+.link{
+  color: green;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 .page{
   margin: 0 auto;
   padding: 2rem;
-}
+  align-content: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  }
+  .app{
+    width: 100%;
+    height: 100%;
+  }
 </style>
