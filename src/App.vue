@@ -1,4 +1,5 @@
 <script setup>
+import HelloWorldPage from './components/HelloWorld.vue';
 import HomePage from './components/HomePage.vue'
 import MenuPage from './components/MenuPage.vue'
 import NotFound from './components/NotFound.vue'  
@@ -12,7 +13,8 @@ const routes = {
   '/home': HomePage,
   '/menu': MenuPage,
   '/about': AboutPage,
-  '/reservations': ReservationsPage
+  '/reservations': ReservationsPage,
+  '/test': HelloWorldPage
 }
 
 const currentPath = ref(window.location.hash)
@@ -47,7 +49,7 @@ const currentView = computed(() => {
   width: 100%;
   border-radius: 10px;
   font-size: 25px;
-
+  z-index: 999;
 }
 .link{
   color: green;
@@ -57,16 +59,15 @@ const currentView = computed(() => {
 }
 .page{
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
   align-content: center;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 100vw;
   height: 100vh;
   }
-  .app{
-    width: 100vw;
-    height: 100vh;
-  }
+.app{
+  width: 100vw;
+  height: 100vh;
+}
 </style>

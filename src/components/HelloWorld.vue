@@ -1,53 +1,87 @@
 <script setup>
-import { ref } from 'vue';
+import anime from 'animejs';
 
-defineProps({
-  msg: {
-    type: String,
-    required: true
+let documentRect = document.body.getBoundingClientRect();
+
+let categoriesExpanded = false;
+let categoryAnimations = [];
+
+let categoryIDs = ["A", "B", "C"];
+
+function handleCategoryClicked(categoryID) {
+  if (!categoriesExpanded) {
+    categoriesExpanded = true;
+
+    let i = categoryIDs.indexOf(categoryID);
+
+    let leftCategories = categoryIDs.slice(0,i).map(item => document.getElementById(item));
+    let selectedCategory = document.getElementById(categoryID);
+    let rightCategories = categoryIDs.slice(i+1,categoryIDs.length).map(item => document.getElementById(item));
+
+    categoryAnimations = [
+      anime({ // Left Animation
+        targets: leftCategories,
+        delay: anime.stagger(100, { direction: 'reverse' }),
+        easing: 'easeInOutCubic',
+        duration: 350,
+        opacity: [1, 0],
+        translateX: '-10rem',
+        update: (anim) => {
+          anim.animatables.forEach(entry => {
+            let element = entry.target;
+            let rect = element.getBoundingClientRect();
+            if (rect.left < 0 || rect.right > documentRect.right) element.style.display = 'none'
+            else element.style.display = 'auto' 
+          });
+        }
+      }),
+      anime({ // Right Animation
+        targets: rightCategories,
+        delay: anime.stagger(100, { direction: 'reverse' }),
+        easing: 'easeInOutCubic',
+        duration: 350,
+        opacity: [1, 0],
+        translateX: [0, '10rem'],
+        update: (anim) => {
+          anim.animatables.forEach(entry => {
+            let element = entry.target;
+            let rect = element.getBoundingClientRect();
+            if (rect.left < 0 || rect.right > documentRect.right) element.style.display = 'none'
+            else element.style.display = 'auto' 
+          });
+        }
+      })
+    ];
+  } else {
+    categoriesExpanded = false;
+    categoryAnimations.forEach(animation => animation.reverse());
+    categoryAnimations.forEach(animation => animation.play());
   }
-})
+}
 
-const serverHello = ref({})
-
-fetch("/api/v1/hello")
-  .then((res) => res.json())
-  .then((({ message }) => { serverHello.value = message }))
 </script>
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h2 class="green">{{ serverHello }}</h2>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
+    <div class="bar">
+      <div class="category" v-for="categoryID in categoryIDs" :key="categoryID" @click="handleCategoryClicked(categoryID)" :id="categoryID">{{ categoryID }}</div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
+
+.bar {
+  display: flex;
+  flex-direction: row;
 }
 
-h3 {
-  font-size: 1.2rem;
+.category {
+  margin: .25rem .5rem;
+  padding: .25rem .5rem;
+  border: .2rem solid;
+  border-color: var(--color-border);
+  border-radius: .2rem;
 }
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
 </style>
