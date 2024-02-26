@@ -1,22 +1,14 @@
-<script>
+<script setup>
 import menu from '../assets/json/menu.json';
 import anime from 'animejs';
-export default {
-  data() {
-    return {
-      menu,
-      categoryOriginal: null
-    };
-  },
-  mounted() {
-  },
-  methods: {
-    openCategory(category){
+      let categoryOriginal;
+
+    function openCategory(category){
       category = document.getElementById(category);
       let reverse = category.getAttribute('reverse');
       let pageTitle = document.getElementsByClassName('title')[0];
       if(reverse === 'false'){
-        this.categoryOriginal = category.getBoundingClientRect();
+        categoryOriginal = category.getBoundingClientRect();
       }
       let range = document.createRange();
       range.setStart(pageTitle.firstChild, 0);
@@ -58,18 +50,14 @@ export default {
       anime({
         targets: [category],
         translateY: reverse === 'false' ? -(category.getBoundingClientRect().y - pageTitle.getBoundingClientRect().y) : 0,
-        translateX: reverse === 'false' ? (range.getBoundingClientRect().x - category.getBoundingClientRect().x) : 0,
-        width: reverse === 'false' ? '100vw' : `${this.categoryOriginal.width}px`,
-        height: reverse === 'false' ? '10%' : `${this.categoryOriginal.height}px`,
+        translateX: reverse === 'false' ? `${(range.getBoundingClientRect().x - category.getBoundingClientRect().x)}px` : 0,
+        width: reverse === 'false' ? '100vw' : `${categoryOriginal.width}px`,
+        height: reverse === 'false' ? '10%' : `${categoryOriginal.height}px`,
         duration: 1000,
         easing: 'spring(1, 80, 14.5, 0)',
       });
       pageTitle.innerHTML = reverse === 'false' ? " " : pageTitle.getAttribute('text');
-
-
     }
-  }
-};
 </script>
 
 <template>
