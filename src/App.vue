@@ -5,6 +5,7 @@ import MenuPage from './components/MenuPage.vue'
 import NotFound from './components/NotFound.vue'  
 import AboutPage from './components/AboutPage.vue'
 import ReservationsPage from './components/ReservationsPage.vue'
+import TestPage from './components/TestPage.vue';
 
 import { ref, computed } from 'vue'
 
@@ -14,7 +15,8 @@ const routes = {
   '/menu': MenuPage,
   '/about': AboutPage,
   '/reservations': ReservationsPage,
-  '/test': HelloWorldPage
+  '/test': HelloWorldPage,
+  '/test2': TestPage
 }
 
 const currentPath = ref(window.location.hash)

@@ -6,6 +6,13 @@
   width: 100%;
   height: 100%;
 }
+.bubble{
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  position: absolute;
+  background-color: #fff;
+}
 
 a,
 .green {
