@@ -15,7 +15,7 @@ function handleCategoryClicked(categoryID) {
     let i = categoryIDs.indexOf(categoryID);
 
     let leftCategories = categoryIDs.slice(0,i).map(item => document.getElementById(item));
-    let selectedCategory = document.getElementById(categoryID);
+    //let selectedCategory = document.getElementById(categoryID);
     let rightCategories = categoryIDs.slice(i+1,categoryIDs.length).map(item => document.getElementById(item));
 
     categoryAnimations = [
