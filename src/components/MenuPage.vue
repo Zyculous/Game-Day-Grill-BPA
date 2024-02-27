@@ -73,10 +73,15 @@ import anime from 'animejs';
           loadItems(category);
         }else{
           //Remove the items for the category
-          document.getElementById("itemContainer").remove();
-          let container = document.createElement("div");
-          container.setAttribute("id", "itemContainer");
-          document.getElementById("page").appendChild(container);
+          let items = document.getElementById("itemContainer");
+          let child = items.lastElementChild;
+          while (child){
+            items.removeChild(child);
+            child= items.lastElementChild;
+          }
+          //let container = document.createElement("div");
+          //container.setAttribute("id", "itemContainer");
+          //document.getElementById("page").appendChild(container);
         }
   }
 
@@ -86,7 +91,7 @@ import anime from 'animejs';
       //console.log(items);
       for(let i = 0; i < items.length; i++){
         let itemDiv = document.createElement('div');
-        itemDiv.classList.add('item');
+        itemDiv.classList.add(`item`);
         itemDiv.classList.add(category.id);
         let itemName = document.createElement('h3');
         itemName.classList.add('itemName');
