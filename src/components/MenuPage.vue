@@ -44,48 +44,101 @@ import anime from 'animejs';
           targets: [smaller],
           translateX: reverse === 'false' ? '-100vw' : 0,
           delay: anime.stagger(100),
-          duration: 1000,
+          duration: 1800,
           easing: 'spring(1, 80, 14.5, 0)',
+          opacity: reverse === 'false' ? [1, 0] : [0, 1],
       })
       anime({
           targets: [larger],
           translateX: reverse === 'false' ? '100vw' : 0,
           delay: anime.stagger(100, {direction: 'reverse'}),
-          duration: 1000,
+          duration: 1800,
           easing: 'spring(1, 80, 14.5, 0)',
+          opacity: reverse === 'false' ? [1, 0] : [0, 1],
       })
       anime({
         targets: [category],
         translateY: reverse === 'false' ? -(category.getBoundingClientRect().y - pageTitle.getBoundingClientRect().y) : 0,
-        translateX: reverse === 'false' ? `${(range.getBoundingClientRect().x - category.getBoundingClientRect().x)}px` : 0,
-        width: reverse === 'false' ? '100vw' : `${categoryOriginal.width}px`,
-        height: reverse === 'false' ? '10%' : `${categoryOriginal.height}px`,
-        duration: 1000,
+        translateX: reverse === 'false' ? `${(((range.getBoundingClientRect().right + range.getBoundingClientRect().left)/2) - ((category.getBoundingClientRect().right + category.getBoundingClientRect().left)/2))}px` : 0,
+        width: reverse === 'false' ? '98vw' : `${categoryOriginal.width}px`,
+        height: reverse === 'false' ? '40%' : `${categoryOriginal.height}px`,
+        duration: 1800,
         easing: 'spring(1, 80, 14.5, 0)',
       });
       //hide the title of the page with a " " which is just a hidden character cause for some reason it will jsut remvoe the element all together if you use a space or \n
       pageTitle.innerHTML = reverse === 'false' ? " " : pageTitle.getAttribute('text');
-    }
+      //Load in the rest of the menu when category is opened/closed
+      if(reverse === 'false'){
+          //Load the items for the category
+          loadItems(category);
+        }else{
+          //Remove the items for the category
+          document.getElementById("itemContainer").remove();
+          let container = document.createElement("div");
+          container.setAttribute("id", "itemContainer");
+          document.getElementById("page").appendChild(container);
+        }
+  }
+
+  function loadItems(category){
+    let items = menu[category.id];
+      //itemsDiv.style.display = 'none';
+      //console.log(items);
+      for(let i = 0; i < items.length; i++){
+        let itemDiv = document.createElement('div');
+        itemDiv.classList.add('item');
+        itemDiv.classList.add(category.id);
+        let itemName = document.createElement('h3');
+        itemName.classList.add('itemName');
+        itemName.innerHTML = items[i].name;
+        let itemDesc = document.createElement('p');
+        itemDesc.classList.add('itemDesc');
+        itemDesc.innerHTML = items[i].description;
+        let itemPrice = document.createElement('p');
+        itemPrice.classList.add('itemPrice');
+        itemPrice.innerHTML = items[i].price[0];
+        let itemPriceSelect = document.createElement('select');
+        itemPriceSelect.classList.add('itemPriceSelect');
+        if(!items[i].price[0]){
+          for(let price in items[i].price){
+            let option = document.createElement('option');
+            option.innerHTML = price + ": " + items[i].price[price];
+            itemPriceSelect.appendChild(option);
+          }
+        }
+        itemDiv.appendChild(itemName);
+        itemDiv.appendChild(itemDesc);
+        itemDiv.appendChild(itemPrice);
+        itemDiv.appendChild(itemPriceSelect);
+        document.getElementById('itemContainer').appendChild(itemDiv);
+      }
+  }
+
 </script>
 
 <template>
     <div class="menu-page">
-        <h1 class="center title" text= "Menu&nbsp;Page">Menu&nbsp;Page</h1>
-        <div class="menu">
-            <div class="category" :id="category" reverse='false' @click="openCategory(category)" v-for="(items, category) in menu" :key="category">
-                <h2 class="green center point">{{ category }}</h2>
-                <div>
-                    <!--<div class="item" :class="category" v-for="item in items" :key="item.name">
-                        <h3 class="itemName">{{ item.name }}</h3>
-                        <p class="itemDesc">{{ item.description }}</p>
-                        <p class="itemPrice" v-if="item.price[0]">{{ item.price[0] }}</p>
-                        <select class="itemPriceSelect" v-if="!item.price[0]">
-                            <option v-for="(price, choice) in item.price" :key="price">{{ choice + ": " + price }}</option>
-                        </select>
-                    </div>-->
-                </div>
-            </div>
-        </div>
+      <div id="page">
+          <h1 class="center title" text= "Menu&nbsp;Page">Menu&nbsp;Page</h1>
+          <div class="menu">
+              <div class="category" :id="category" reverse='false' @click="openCategory(category)" v-for="(items, category) in menu" :key="category">
+                  <h2 class="green center point">{{ category }}</h2>
+                  <div>
+                      <!--<div class="item" :class="category" v-for="item in items" :key="item.name">
+                          <h3 class="itemName">{{ item.name }}</h3>
+                          <p class="itemDesc">{{ item.description }}</p>
+                          <p class="itemPrice" v-if="item.price[0]">{{ item.price[0] }}</p>
+                          <select class="itemPriceSelect" v-if="!item.price[0]">
+                              <option v-for="(price, choice) in item.price" :key="price">{{ choice + ": " + price }}</option>
+                          </select>
+                      </div>-->
+                  </div>
+              </div>
+          </div>
+          <div id="itemContainer">
+
+          </div>
+      </div>
     </div>
 </template>
 
@@ -95,6 +148,21 @@ import anime from 'animejs';
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+#itemContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    max-width: 100vw;
+}
+#page{
+  width: 100vw;
+  padding-left: 2%;
+  justify-content: space-between;
+  display: flex;
+  flex-flow: column;
 }
 .title{
   color: #85ae84;
