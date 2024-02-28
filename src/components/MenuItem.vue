@@ -6,14 +6,27 @@ defineProps([
     'description',
     'prices'
 ]);
+</script>
+<script>
+export default {
+    mounted(){
+        console.log(this.name);
+        let elements = document.getElementsByClassName('menu-item');
+        let element = document.getElementById(this.name);
+        elements = Array.from(elements);
+        let i = elements.indexOf(element);
+        console.log(i);
 
-    anime({
-        targets: [document.querySelectorAll('.menu-item')],
-        translateY: [200, 0],
-        duration: 1500,
-        delay: anime.stagger(100),
-        opacity: [0, 1],
-    });
+        console.log(element);
+        anime({
+            targets: element,
+            translateY: [200, 0],
+            duration: 1500,
+            opacity: [0, 1],
+            delay: 100*i
+        });
+    }
+}
 </script>
 
 <template>
