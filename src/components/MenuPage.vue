@@ -17,6 +17,7 @@ let menuItems = computed(() => {
   return menu[selectedCategoryID.id] || [];
 });
 
+
 function handleCategoryClicked(categoryID) {
   if (!categoriesExpanded) {
     selectedCategoryID.id = categoryID;
@@ -119,6 +120,9 @@ function handleCategoryClicked(categoryID) {
   border-radius: 10px;
   color: #d2cece;
   width: inherit;
+}
+#menu-item-container{
+  visibility: visible;
 }
 
 </style>

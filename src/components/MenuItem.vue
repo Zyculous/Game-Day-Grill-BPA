@@ -1,13 +1,23 @@
 <script setup>
+import anime from 'animejs';
+
 defineProps([
     'name',
     'description',
     'prices'
 ]);
+
+    anime({
+        targets: [document.querySelectorAll('.menu-item')],
+        translateY: [200, 0],
+        duration: 1500,
+        delay: anime.stagger(100),
+        opacity: [0, 1],
+    });
 </script>
 
 <template>
-    <div class="menu-item" :id="name">
+    <div class="menu-item" :id="name" @load="loadItem(name)">
         <h3 class="menu-item-name">{{ name }}</h3>
         <p class="menu-item-description">{{ description }}</p>
         <div class="menu-item-prices">
