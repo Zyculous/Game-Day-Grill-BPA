@@ -4,6 +4,8 @@ import MenuItem from './MenuItem.vue';
 import menu from '../assets/json/menu.json';
 import anime from 'animejs';
 
+console.log(menu);
+
 let categoriesExpanded = false;
 let categoryAnimations = [];
 
@@ -102,6 +104,7 @@ async function handleCategoryClicked(categoryID) {
           <MenuItem
             class="menu-item"
             :name="menuItem.name" 
+            :img-src="menuItem.src"
             :description="menuItem.description" 
             :prices="menuItem.price" 
             v-for="menuItem in menuItems" 

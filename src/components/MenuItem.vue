@@ -3,6 +3,7 @@
 defineProps([
     'name',
     'description',
+    'imgSrc',
     'prices'
 ]);
 </script>
@@ -10,6 +11,7 @@ defineProps([
 <template>
     <div class="menu-item" :id="name" @load="loadItem(name)">
         <h3 class="menu-item-name">{{ name }}</h3>
+        <img :src="imgSrc" />
         <p class="menu-item-description">{{ description }}</p>
         <div class="menu-item-prices">
             <div class="menu-item-price" v-for="(price, variantName) in prices" :key="variantName">
