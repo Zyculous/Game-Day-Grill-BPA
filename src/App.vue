@@ -49,6 +49,7 @@ const currentView = computed(() => {
   position: fixed;
   top: 0;
   width: 100%;
+  left: 0vw;
   border-radius: 10px;
   font-size: 25px;
   z-index: 999;
@@ -66,10 +67,11 @@ const currentView = computed(() => {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  height: 100vh;
   }
 .app{
-  width: 100vw;
+  position: relative;
+  width: 96vw;
   height: 100vh;
+  left: 2vw;
 }
 </style>

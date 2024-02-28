@@ -52,14 +52,6 @@ function handleCategoryClicked(categoryID) {
         duration: 300,
         opacity: [1, 0],
         translateX: '-10rem',
-        update: (anim) => {
-          anim.animatables.forEach(entry => {
-            let element = entry.target;
-            let rect = element.getBoundingClientRect();
-            if (rect.left < 0 || rect.right > documentRect.right) element.style.visibility = 'hidden'
-            else element.style.visibility = 'visible' 
-          });
-        }
       }),
       anime({ // Selected Category Animation
         targets: selectedCategory,
@@ -75,14 +67,6 @@ function handleCategoryClicked(categoryID) {
         duration: 300,
         opacity: [1, 0],
         translateX: '10rem',
-        update: (anim) => {
-          anim.animatables.forEach(entry => {
-            let element = entry.target;
-            let rect = element.getBoundingClientRect();
-            if (rect.left < 0 || rect.right > documentRect.right) element.style.visibility = 'hidden'
-            else element.style.visibility = 'visible' 
-          });
-        }
       })
     ];
   } else {
@@ -92,8 +76,6 @@ function handleCategoryClicked(categoryID) {
 
     categoryAnimations.forEach(animation => animation.reverse());
     categoryAnimations.forEach(animation => animation.play());
-
-    document.getElementsByClassName('category').forEach(category => category.style.visibility = 'visible');
   }
 }
 
@@ -121,20 +103,22 @@ function handleCategoryClicked(categoryID) {
   justify-content: center;
   overflow: hidden;
   width: inherit;
+  height: min-content;
 }
 .title{
   color: #85ae84;
 }
 .category{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    padding: 10px;
-    border: 5px solid #85ae84;
-    border-radius: 10px;
-    color: #d2cece;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+  border: 5px solid #85ae84;
+  border-radius: 10px;
+  color: #d2cece;
+  width: inherit;
 }
 
 </style>

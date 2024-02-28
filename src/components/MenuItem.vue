@@ -41,7 +41,7 @@ defineProps([
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 50vw;
+    width: 60vw;
 }
 
 </style>
