@@ -1,4 +1,5 @@
 <script setup>
+import { computed, reactive } from 'vue';
 import MenuItem from './MenuItem.vue';
 import menu from '../assets/json/menu.json';
 import anime from 'animejs';
@@ -10,11 +11,12 @@ let categoryAnimations = [];
 
 let categoryIDs = Object.keys(menu);
 
-let menuItems = menu[categoryIDs[0]];
+const selectedCategoryID = reactive({ id: "" });
 
-function testFunction() {
-  return menuItems;
-}
+let menuItems = computed(() => {
+  console.log(selectedCategoryID);
+  return menu[selectedCategoryID.id] || [];
+});
 
 function handleCategoryClicked(categoryID) {
   if (!categoriesExpanded) {
@@ -83,15 +85,14 @@ function handleCategoryClicked(categoryID) {
       })
     ];
 
-    menuItems = menu[categoryID];
-    console.log(menuItems);
+    selectedCategoryID.id = categoryID;
   } else {
     categoriesExpanded = false;
 
     categoryAnimations.forEach(animation => animation.reverse());
     categoryAnimations.forEach(animation => animation.play());
 
-    menuItems = [];
+    selectedCategoryID.id = "";
   }
 }
 
@@ -107,7 +108,7 @@ function handleCategoryClicked(categoryID) {
             </div>
         </div>
         <div class="center" id="menu-item-container">
-          <MenuItem :key="menuItem.name" :name="menuItem.name" v-for="menuItem in menuItems" v-show="true"></MenuItem>
+          <MenuItem :name="menuItem.name" v-for="menuItem in menuItems" v-show="true" :key="menuItem.name"></MenuItem>
         </div>
     </div>
 </template>
