@@ -65,7 +65,7 @@ const currentView = computed(() => {
   align-content: center;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   height: 100vh;
   }
 .app{

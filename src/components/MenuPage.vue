@@ -14,12 +14,13 @@ let categoryIDs = Object.keys(menu);
 const selectedCategoryID = reactive({ id: "" });
 
 let menuItems = computed(() => {
-  console.log(selectedCategoryID);
   return menu[selectedCategoryID.id] || [];
 });
 
 function handleCategoryClicked(categoryID) {
   if (!categoriesExpanded) {
+    selectedCategoryID.id = categoryID;
+
     categoriesExpanded = true;
 
     let i = categoryIDs.indexOf(categoryID);
@@ -44,7 +45,7 @@ function handleCategoryClicked(categoryID) {
         opacity: [1, -1],
         height: 0
       }),
-      anime({ // Left Animation
+      anime({ // Left Categories Animation
         targets: leftCategories,
         delay: anime.stagger(75),
         easing: 'easeInOutCubic',
@@ -60,14 +61,14 @@ function handleCategoryClicked(categoryID) {
           });
         }
       }),
-      anime({ // Selected Animation
+      anime({ // Selected Category Animation
         targets: selectedCategory,
         easing: 'easeInOutCubic',
         duration: 600,
         translateX: `${selectedCategoryOffsetX}px`,
         width: `${selectedCategoryWidth}px`,
       }),
-      anime({ // Right Animation
+      anime({ // Right Categories Animation
         targets: rightCategories,
         delay: anime.stagger(75, { direction: 'reverse' }),
         easing: 'easeInOutCubic',
@@ -84,15 +85,15 @@ function handleCategoryClicked(categoryID) {
         }
       })
     ];
-
-    selectedCategoryID.id = categoryID;
   } else {
+    selectedCategoryID.id = "";
+
     categoriesExpanded = false;
 
     categoryAnimations.forEach(animation => animation.reverse());
     categoryAnimations.forEach(animation => animation.play());
 
-    selectedCategoryID.id = "";
+    document.getElementsByClassName('category').forEach(category => category.style.visibility = 'visible');
   }
 }
 
@@ -100,7 +101,6 @@ function handleCategoryClicked(categoryID) {
 
 <template>
     <div class="menu-page">
-        <button @click="testFunction">A</button>
         <h1 class="center title" text= "Menu&nbsp;Page" id="menu-title">Menu&nbsp;Page</h1>
         <div class="menu">
             <div class="category" :id="categoryID" @click="handleCategoryClicked(categoryID)" v-for="categoryID in categoryIDs" :key="categoryID">
@@ -108,19 +108,19 @@ function handleCategoryClicked(categoryID) {
             </div>
         </div>
         <div class="center" id="menu-item-container">
-          <MenuItem :name="menuItem.name" v-for="menuItem in menuItems" v-show="true" :key="menuItem.name"></MenuItem>
+          <MenuItem :name="menuItem.name" :description="menuItem.description" :prices="menuItem.price" v-for="menuItem in menuItems" v-show="true" :key="menuItem.name"></MenuItem>
         </div>
     </div>
 </template>
 
 <style scoped>
 .menu{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: inherit;
 }
 .title{
   color: #85ae84;
