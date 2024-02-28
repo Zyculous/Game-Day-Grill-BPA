@@ -1,32 +1,10 @@
 <script setup>
-import anime from 'animejs';
 
 defineProps([
     'name',
     'description',
     'prices'
 ]);
-</script>
-<script>
-export default {
-    mounted(){
-        console.log(this.name);
-        let elements = document.getElementsByClassName('menu-item');
-        let element = document.getElementById(this.name);
-        elements = Array.from(elements);
-        let i = elements.indexOf(element);
-        console.log(i);
-
-        console.log(element);
-        anime({
-            targets: element,
-            translateY: [200, 0],
-            duration: 1500,
-            opacity: [0, 1],
-            delay: 100*i
-        });
-    }
-}
 </script>
 
 <template>

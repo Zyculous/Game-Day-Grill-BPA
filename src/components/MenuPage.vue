@@ -1,10 +1,8 @@
 <script setup>
-import { computed, reactive } from 'vue';
+import { computed, reactive, nextTick } from 'vue';
 import MenuItem from './MenuItem.vue';
 import menu from '../assets/json/menu.json';
 import anime from 'animejs';
-
-let documentRect = document.body.getBoundingClientRect();
 
 let categoriesExpanded = false;
 let categoryAnimations = [];
@@ -17,8 +15,7 @@ let menuItems = computed(() => {
   return menu[selectedCategoryID.id] || [];
 });
 
-
-function handleCategoryClicked(categoryID) {
+async function handleCategoryClicked(categoryID) {
   if (!categoriesExpanded) {
     selectedCategoryID.id = categoryID;
 
@@ -70,6 +67,17 @@ function handleCategoryClicked(categoryID) {
         translateX: '10rem',
       })
     ];
+
+    await nextTick();
+
+    anime({
+      targets: '.menu-item',
+      delay: anime.stagger(50),
+      easing: 'easeInOutCubic',
+      duration: 300,
+      translateY: ['5rem', 0],
+      opacity: [0, 1]
+    })
   } else {
     selectedCategoryID.id = "";
 
@@ -91,7 +99,14 @@ function handleCategoryClicked(categoryID) {
             </div>
         </div>
         <div class="center" id="menu-item-container">
-          <MenuItem :name="menuItem.name" :description="menuItem.description" :prices="menuItem.price" v-for="menuItem in menuItems" v-show="true" :key="menuItem.name"></MenuItem>
+          <MenuItem
+            class="menu-item"
+            :name="menuItem.name" 
+            :description="menuItem.description" 
+            :prices="menuItem.price" 
+            v-for="menuItem in menuItems" 
+            :key="menuItem.name"
+          />
         </div>
     </div>
 </template>
