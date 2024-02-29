@@ -1,3 +1,7 @@
+# Recoded
+The website has been designed from the ground up with a brand new frontend!! All because we didn't like how the old one looked and I felt like driving myself crazy with an all new component manager and quasi-language!! 
+I also decided to spend a whole month on just learning the animations library thing so I could actually understand it and do cool things like *make things slide*
+
 # Vue Testing
 
 This template should help get you started developing with Vue 3 in Vite.
