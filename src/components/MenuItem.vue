@@ -37,17 +37,27 @@ defineProps([
 }
 
 .menu-item > h3 {
+    margin-top: .5rem;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
 .menu-item > div {
+    margin-top: 1rem;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 60vw;
 }
 
+.menu-item > div > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .menu-item > img {
+    margin: 1rem 0;
     border-radius: .6rem;
 }
 
