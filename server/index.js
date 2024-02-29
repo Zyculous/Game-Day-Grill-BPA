@@ -1,6 +1,5 @@
 import express from "express";
 import homepageRouter from "./homepageRouter.js";
-import assetsRouter from "./assetsRouter.js";
 import path from "path";
 
 // eslint-disable-next-line no-undef
@@ -10,7 +9,6 @@ const publicPath = path.join(path.resolve(), "public");
 const app = express();
 
 app.use("/static", express.static(publicPath));
-app.use("/src", assetsRouter);
 app.use(homepageRouter);
 
 app.listen(port, () => {
