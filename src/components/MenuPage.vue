@@ -87,15 +87,23 @@ async function handleCategoryClicked(categoryID) {
       easing: 'easeInOutCubic',
       duration: 300,
       translateY: ['5rem', 0],
-      opacity: [0, 1]
+      opacity: [0, 1],
+      
     })
   } else {
-    selectedCategoryID.id = ''
-
     categoriesExpanded = false
 
     categoryAnimations.forEach((animation) => animation.reverse())
     categoryAnimations.forEach((animation) => animation.play())
+
+    anime({
+      targets: '.menu-item',
+      delay: anime.stagger(50),
+      easing: 'easeInOutCubic',
+      duration: 300,
+      translateY: [0, '5rem'],
+      opacity: [1, 0],
+    })
   }
 }
 </script>
