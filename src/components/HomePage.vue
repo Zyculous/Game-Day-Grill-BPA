@@ -37,8 +37,7 @@ export default {
 </template>
 
 <style scoped>
-#app-content {
-  height: 100vh; /* Adjust as per your layout */
-  overflow-y: auto;
-}
+
+
+
 </style>
