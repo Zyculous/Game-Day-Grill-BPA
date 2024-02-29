@@ -1,32 +1,14 @@
-<script>
-import anime from 'animejs/lib/anime.es.js';
+<script setup>
 
-export default {
-  mounted() {
-    this.$refs.content.addEventListener('scroll', this.handleScroll);
-  },
-  beforeUnmount() {
-    this.$refs.content.removeEventListener('scroll', this.handleScroll);
-  },
-  methods: {
-    handleScroll(event) {
-      const el = event.target;
-      if (el.scrollTop === 0 || el.scrollHeight - el.scrollTop === el.clientHeight) {
-        this.bounceElement(el);
-      }
-    },
-    bounceElement(el) {
-      anime({
-        targets: el,
-        translateY: [
-          { value: -30, duration: 100 },
-          { value: 0, duration: 800, easing: 'easeOutElastic(1, .8)' }
-        ],
-        duration: 900,
-      });
-    }
-  }
+let req = new XMLHttpRequest();
+
+req.onload = () => {
+  console.log(req.responseText);
 };
+
+req.open("GET", "src/images/arcade2.jpeg");
+req.send();
+
 </script>
 
 <template>
@@ -37,7 +19,5 @@ export default {
 </template>
 
 <style scoped>
-
-
 
 </style>

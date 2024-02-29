@@ -7,11 +7,12 @@ const supportedAssets = [ "svg", "png", "jpg", "jpeg", "mp4", "ogv" ];
 const assetExtentionRegex = () => {
     const formattedExtensionList = supportedAssets.join("|");
 
+    // eslint-disable-next-line no-useless-escape
     return new RegExp(`/.+\.(${formattedExtensionList})$`);
 };
 
-router.get(assetExtentionRegex(), (req, res) => {
-    res.redirect(303, `http://localhost:5173/src${req.path}`);
+router.get(assetExtentionRegex(), () => {
+
 });
 
 export default router;

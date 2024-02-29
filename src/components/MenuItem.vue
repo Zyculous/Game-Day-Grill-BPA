@@ -47,4 +47,8 @@ defineProps([
     width: 60vw;
 }
 
+.menu-item > img {
+    border-radius: .6rem;
+}
+
 </style>

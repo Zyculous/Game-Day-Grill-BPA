@@ -20,7 +20,8 @@
                     "18": 19.99,
                     "24": 24.99
                 },
-                "src": "https://st.depositphotos.com/1692343/2350/i/600/depositphotos_23507259-stock-photo-hot-and-spicey-buffalo-chicken.jpg"
+                "src": "static/images/chicken_wings_thumbnail.jpg",
+                "imageOrigin": "https://st.depositphotos.com/1692343/2350/i/600/depositphotos_23507259-stock-photo-hot-and-spicey-buffalo-chicken.jpg"
             },
             {
                 "name": "Mozzarella Sticks",
@@ -32,7 +33,8 @@
                         "max": 1
                     }
                 },
-                "src": "https://st2.depositphotos.com/1373322/7158/i/600/depositphotos_71588505-stock-photo-hot-fried-cheese-on-a.jpg"
+                "src": "static/images/mozzarella_sticks_thumbnail.jpg",
+                "imageOrigin": "https://st2.depositphotos.com/1373322/7158/i/600/depositphotos_71588505-stock-photo-hot-fried-cheese-on-a.jpg"
             },
             {
                 "name": "Loaded Fries",
@@ -44,7 +46,8 @@
                         "max": 3
                     }
                 },
-                "src": "https://st5.depositphotos.com/3210553/63890/i/600/depositphotos_638900924-stock-photo-crispy-french-fries-loaded-bacon.jpg"
+                "src": "static/images/loaded_fries_thumbnail.jpg",
+                "imageOrigin": "https://st5.depositphotos.com/3210553/63890/i/600/depositphotos_638900924-stock-photo-crispy-french-fries-loaded-bacon.jpg"
             },
             {
                 "name": "Chips and Dip",
@@ -56,7 +59,8 @@
                         "max": 3
                     }
                 },
-                "src":"https://st4.depositphotos.com/13349494/29102/i/600/depositphotos_291023390-stock-photo-close-view-mexican-corn-delicious.jpg"
+                "src": "static/images/chips_and_dip_thumbnail.jpg",
+                "imageOrigin":"https://st4.depositphotos.com/13349494/29102/i/600/depositphotos_291023390-stock-photo-close-view-mexican-corn-delicious.jpg"
             },
             {
                 "name": "Fried Pickles",
@@ -68,7 +72,8 @@
                         "max:": 2
                     }
                 },
-                "src": "https://st.depositphotos.com/1692343/4666/i/600/depositphotos_46666867-stock-photo-delicious-battered-fried-pickles.jpg"
+                "src": "static/images/fried_pickles_thumbnail.jpg",
+                "imageOrigin": "https://st.depositphotos.com/1692343/4666/i/600/depositphotos_46666867-stock-photo-delicious-battered-fried-pickles.jpg"
             }
         ],
         "Entrees": [

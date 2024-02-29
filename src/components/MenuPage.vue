@@ -4,8 +4,6 @@ import MenuItem from './MenuItem.vue'
 import menu from '../assets/json/menu.json'
 import anime from 'animejs'
 
-console.log(menu)
-
 let categoriesExpanded = false
 let categoryAnimations = []
 
@@ -66,7 +64,7 @@ async function handleCategoryClicked(categoryID) {
         // Selected Category Animation
         targets: selectedCategory,
         easing: 'easeInOutCubic',
-        duration: 600,
+        duration: 500,
         translateX: `${selectedCategoryOffsetX}px`,
         width: `${selectedCategoryWidth}px`
       }),
