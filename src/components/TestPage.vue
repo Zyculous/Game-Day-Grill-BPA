@@ -67,6 +67,16 @@
     <div id="background"></div>
   </div>
 </template>
+
+<style>
+.bubble {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+</style>
+
 <style scoped>
 .test-page {
   display: flex;
@@ -75,12 +85,6 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-}
-.bubble {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
 }
 #background {
   position: absolute;
