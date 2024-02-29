@@ -4,7 +4,7 @@ import MenuItem from './MenuItem.vue'
 import menu from '../assets/json/menu.json'
 import anime from 'animejs'
 
-console.log(menu)
+let categoriesDebounce = false;
 
 let categoriesExpanded = false
 let categoryAnimations = []
@@ -18,6 +18,8 @@ let menuItems = computed(() => {
 })
 
 async function handleCategoryClicked(categoryID) {
+  if (categoriesDebounce) return;
+
   if (!categoriesExpanded) {
     selectedCategoryID.id = categoryID
 
@@ -66,7 +68,7 @@ async function handleCategoryClicked(categoryID) {
         // Selected Category Animation
         targets: selectedCategory,
         easing: 'easeInOutCubic',
-        duration: 600,
+        duration: 500,
         translateX: `${selectedCategoryOffsetX}px`,
         width: `${selectedCategoryWidth}px`
       }),
@@ -89,16 +91,30 @@ async function handleCategoryClicked(categoryID) {
       easing: 'easeInOutCubic',
       duration: 300,
       translateY: ['5rem', 0],
-      opacity: [0, 1]
+      opacity: [0, 1],
+      
     })
   } else {
-    selectedCategoryID.id = ''
-
     categoriesExpanded = false
 
     categoryAnimations.forEach((animation) => animation.reverse())
     categoryAnimations.forEach((animation) => animation.play())
+
+    anime({
+      targets: '.menu-item',
+      delay: anime.stagger(50),
+      easing: 'easeInOutCubic',
+      duration: 300,
+      translateY: [0, '5rem'],
+      opacity: [1, 0],
+      complete: () => {
+        selectedCategoryID.id = '';
+      }
+    })
   }
+
+  categoriesDebounce = true;
+  setTimeout(() => categoriesDebounce = false, 600);
 }
 </script>
 
@@ -139,6 +155,11 @@ async function handleCategoryClicked(categoryID) {
   width: 100%;
 }
 
+.title {
+  width: 100%;
+  text-align: center;
+}
+
 .menu {
   display: flex;
   overflow: hidden;
@@ -159,6 +180,10 @@ async function handleCategoryClicked(categoryID) {
 
 .title {
   color: var(--color-highlight-1)
+}
+
+.menu-item {
+  margin: 2rem 0;
 }
 
 </style>
