@@ -10,7 +10,7 @@
             targets: '.page',
             opacity: [1, 0],
             translateY: [0, 50],
-            duration: 250,
+            duration: 200,
             easing: 'easeInOutCubic',
             complete: function() {
                 loadPage(i);
@@ -52,7 +52,7 @@
                 backgroundColor: backgroundColors,
                 translateY: anime.random(-100, 100),
                 translateX: anime.random(-100, 100),
-                duration: anime.random(100, 2000),
+                duration: anime.random(100, 1500),
                 easing: 'easeInOutCubic',
                 complete: function() {
                 document.getElementById('page').removeChild(document.getElementById(`block${i}`));
@@ -66,7 +66,10 @@
 
 <template>
     <div class="navbar">
-        <a class="link" @click="exitPage(i)" v-for="(route, i) in routes" :key="route">{{ route }}</a>   
+        <div v-for="(route, i) in routes" :id="i" class="button">
+            <a class="link" @click="exitPage(i)" :key="route">{{ route }}</a>
+            <p>|</p>   
+        </div>
     </div>
 </template>
 
@@ -78,6 +81,8 @@
   width: 100%;
   height: 6%;
   border-bottom: .1rem solid var(--color-border);
+  cursor: pointer;
+  justify-content: center;
 }
 
 .navbar > * {
@@ -85,13 +90,18 @@
   margin: .1rem .5rem;
   text-decoration: none;
 }
-
-.navbar > p {
+.button{
+    display: flex;
+    flex-direction: row;
+}
+.button > p {
   color: var(--color-border);
 }
 
-.navbar > a {
-  color: var(--color-highlight-1);
+.button > a {
+    color: var(--color-highlight-1);
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 </style>

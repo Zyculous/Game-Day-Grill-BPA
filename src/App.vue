@@ -6,6 +6,7 @@ import AboutPage from './components/AboutPage.vue'
 import ReservationsPage from './components/ReservationsPage.vue'
 import TestPage from './components/TestPage.vue'
 import NavBar from './components/NavBar.vue'
+import CartPage from './components/CartPage.vue'
 
 import { ref, computed } from 'vue'
 
@@ -14,18 +15,19 @@ const routes = {
   '/menu': MenuPage,
   '/about': AboutPage,
   '/reservations': ReservationsPage,
-  '/test2': TestPage
+  '/test2': TestPage,
+  '/cart': CartPage
 }
 const navBar = {
   '/home': 'Home',
   '/menu': 'Menu',
   '/about': 'About',
   '/reservations': 'Reservations',
-  '/test2': 'Test'
+  '/test2': 'Test',
+  '/cart': 'Cart'
 }
 
 const currentPath = ref(window.location.hash)
-console.log(currentPath.value)
 
 window.addEventListener('hashchange', () => {
   currentPath.value = window.location.hash
