@@ -27,7 +27,7 @@ nextTick(() => {
       // Run this code every second
       let squares = document.querySelectorAll('.square')
       for (let square of squares) {
-        let oldX = parseInt(square.style.transform.split('(')[1]);
+        //let oldX = parseInt(square.style.transform.split('(')[1]);
         let newX = anime.random(0, 100);
         //console.log("Old: " + oldX);
         //console.log("New: " + newX);

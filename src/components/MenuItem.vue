@@ -1,4 +1,5 @@
 <script setup>
+import cookieUtils from '../scripts/cookieUtils';
 
 const props = defineProps([
     'name',
@@ -7,40 +8,29 @@ const props = defineProps([
     'prices'
 ]);
 
-let selectedType = props.prices[0] ? props.prices[0] : null;
-let selectedPrice = props.prices[0] ? props.prices[0] : props.prices;
+function getValidCart() {
+    let cart = cookieUtils.getCookie('cart');
+    if (!Array.isArray(cart.items)) cart.items = [];
+    return cart;
+}
 
 function selectVariant(variantName) {
-    selectedType = variantName;
-    selectedPrice = props.prices[variantName];
-    let allPrices = document.getElementsByClassName(`menu-item-price ${props.name}`);
-    console.log(allPrices);
-    for (let price of allPrices) {
-        price.style.border = "2px ";
+    let variantElements = document.getElementsByClassName('menu-item-price');
+    for (let i = 0; i < variantElements.length; i++) {
+        variantElements.item(i).setAttribute("selected","false");
     }
-    document.getElementById(variantName).style.border = "2px solid #85ae84";
-    console.log(props.prices[variantName])
+
+    let variantElement = document.getElementById(variantName);
+    variantElement.setAttribute("selected","true");
 }
 
 function addItemToCart(itemName) {
-    console.log(`Adding ${itemName} to cart`);
-    let oldCart = JSON.parse(localStorage.getItem('cart'));
-    console.log(oldCart);
-    let newItem = {name: itemName, type: selectedType, price: selectedPrice, count: 1};
-    let combinedCart = oldCart + newItem;
-    if(oldCart !== null){
-        localStorage.setItem('cart', JSON.stringify(combinedCart));
-    }
-    else{
-        localStorage.setItem('cart', JSON.stringify(newItem));
-        console.log("No old cart found");
-    }
-
-    console.log(`Added ${itemName} to cart for $${selectedPrice}`);   
-}
-function removeItemFromCart(itemName){
-    localStorage.removeItem(itemName);
-    console.log(`Removed ${itemName} from cart`);
+    let cart = getValidCart();
+    cart.items.push({
+        name: itemName,
+        
+    });
+    cookieUtils.setCookie('cart',cart);
 }
 
 </script>
@@ -51,15 +41,12 @@ function removeItemFromCart(itemName){
         <img :src="imgSrc" />
         <p class="menu-item-description">{{ description }}</p>
         <div class="menu-item-prices">
-            <div class="menu-item-price" :class="name" v-for="(price, variantName) in prices" :key="variantName" :id="variantName" @click="selectVariant(variantName)">
+            <div class="menu-item-price" selected="false" :class="name" v-for="(price, variantName) in prices" :key="variantName" :id="variantName" @click="selectVariant(variantName)">
                 <p v-if="variantName !== 0">{{ variantName }}</p>
                 <p>${{ price }}</p>
             </div>
         </div>
-        <div>
-            <button @click="removeItemFromCart(name)">Remove from Cart</button>
-            <button @click="addItemToCart(name)">Add to Cart</button>
-        </div>
+        <button @click="addItemToCart(name)">Add to Cart</button>
     </div>
 </template>
 
@@ -91,10 +78,21 @@ function removeItemFromCart(itemName){
     width: 60vw;
 }
 
-.menu-item > div > div {
+.menu-item-price {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: .15rem;
+    margin: 5px;
+}
+
+.menu-item-price[selected="true"] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    border: 5px solid #85ae84;
+    border-radius: 10px;
 }
 
 .menu-item > img {
