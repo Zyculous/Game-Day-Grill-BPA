@@ -1,10 +1,8 @@
 <script setup>
-function removeFromCart(item) {
-  localStorage.removeItem(item)
-}
-let cartItems = JSON.parse(localStorage.getItem('cart'))
-cartItems = cartItems.spli
-console.log(cartItems)
+import cookieUtils from '../scripts/cookieUtils';
+
+
+let cartItems = cookieUtils.getCookie('cart').items;
 </script>
 
 <template>

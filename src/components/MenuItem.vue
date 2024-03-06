@@ -7,7 +7,7 @@ const props = defineProps([
     'imgSrc',
     'prices'
 ]);
-
+let selectedVariant;
 function getValidCart() {
     let cart = cookieUtils.getCookie('cart');
     if (!Array.isArray(cart.items)) cart.items = [];
@@ -22,13 +22,14 @@ function selectVariant(variantName) {
 
     let variantElement = document.getElementById(variantName);
     variantElement.setAttribute("selected","true");
+    selectedVariant = variantName;
 }
 
-function addItemToCart(itemName) {
+function addItemToCart(itemName, prices) {
     let cart = getValidCart();
     cart.items.push({
         name: itemName,
-        
+        price: prices[selectedVariant]
     });
     cookieUtils.setCookie('cart',cart);
 }
@@ -46,7 +47,7 @@ function addItemToCart(itemName) {
                 <p>${{ price }}</p>
             </div>
         </div>
-        <button @click="addItemToCart(name)">Add to Cart</button>
+        <button @click="addItemToCart(name, prices)">Add to Cart</button>
     </div>
 </template>
 
