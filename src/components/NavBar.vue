@@ -1,22 +1,33 @@
 <script setup>
-import pageTransitionAnimation from '../scripts/PageTransitionAnimation';
+import pageTransitionAnimations from '../scripts/PageTransitionAnimations';
 
 defineProps([
     'routes'
 ]);
 
-let usePageTransitionAnimation = false;
+let fadeOutAnimation = false;
+let fancyBlockAnimation = true;
 
-let exitPage = (i) => {pageTransitionAnimation.exitPage(i, 
-    (i) => {pageTransitionAnimation.loadPage(i,()=>{});}
-);};
+let debounce = false;
 
-if (usePageTransitionAnimation) {
-    exitPage = (i) => {pageTransitionAnimation.exitPage(i, 
-        (i) => {pageTransitionAnimation.loadPage(i,
-            () => pageTransitionAnimation.blockAnimation()    
-        );}
-    );};
+async function movePage(route) {
+    if (debounce) return;
+
+    debounce = true;
+
+    if (fadeOutAnimation) await pageTransitionAnimations.fadeOut().finished;
+
+    window.location.hash = `${route}`;
+
+    let loadingAnimations = [];
+
+    if (fadeOutAnimation) loadingAnimations.push(pageTransitionAnimations.fadeIn().finished);
+
+    if (fancyBlockAnimation) loadingAnimations.push(...await pageTransitionAnimations.fancyBlockAnimation());
+
+    await Promise.all(loadingAnimations);
+
+    debounce = false;
 }
 
 </script>
@@ -26,7 +37,7 @@ if (usePageTransitionAnimation) {
         <p> | </p>
         <div v-for="(info, route) in routes" :id="info.navbarName" :key="info.navbarName">
             <div v-if="!info.hidden" class="button">
-                <a class="link" @click="exitPage(route)">{{ info.navbarName }}</a>
+                <a class="link" @click="movePage(route)">{{ info.navbarName }}</a>
                 <p> | </p>  
             </div> 
         </div>

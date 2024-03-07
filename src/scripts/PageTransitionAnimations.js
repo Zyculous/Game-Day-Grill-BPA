@@ -1,35 +1,30 @@
 import { nextTick } from 'vue';
 import anime from 'animejs';
 
-function exitPage(i,next){
-    anime({
+function fadeOut(){
+    return anime({
         targets: '.page',
         opacity: [1, 0],
         translateY: [0, 50],
         duration: 200,
         easing: 'easeInOutCubic',
-        complete: function() {
-            next(i);
-        }
     });
 }
 
-function loadPage(i, next) {
-    window.location.hash = `${i}`;
-
-    anime({
+function fadeIn() {
+    return anime({
         targets: '.page',
         opacity: [0, 1],
         translateY: [50, 0],
         duration: 1000,
         easing: 'easeInOutCubic'
     });
-
-    next(i);
 }
 
-function blockAnimation() {
-    nextTick(() => {
+async function fancyBlockAnimation() {
+    let promises = [];
+
+    await nextTick(() => {
         let backgroundColors = [
             {value: () => `rgb(${anime.random(50, 14)}, ${anime.random(168, 184)}, ${anime.random(70, 98)})`}, //Purple color scale
             {value: () => `rgb(${anime.random(200, 145)}, ${anime.random(30, 10)}, ${anime.random(20, 4)})`}, //Red color scale
@@ -50,7 +45,7 @@ function blockAnimation() {
             block.id = `block${i}`
             document.getElementById('page').appendChild(block);
 
-            anime({
+            promises.push(anime({
                 targets: block,
                 backgroundColor: backgroundColors,
                 translateY: anime.random(-100, 100),
@@ -60,13 +55,15 @@ function blockAnimation() {
                 complete: function() {
                 document.getElementById('page').removeChild(document.getElementById(`block${i}`));
                 }
-            });
+            }).finished);
         }
     });
+
+    return promises;
 }
 
 export default {
-    exitPage: exitPage,
-    loadPage: loadPage,
-    blockAnimation: blockAnimation
+    fadeOut: fadeOut,
+    fadeIn: fadeIn,
+    fancyBlockAnimation: fancyBlockAnimation,
 }
