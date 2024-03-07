@@ -32,24 +32,28 @@ function validateObject(obj, validation={}) {
     return obj;
 }
 
+function getCookie(name, validation={}) {
+    let serialized = localStorage[name];
+
+    let json;
+    try {
+        json = JSON.parse(serialized);
+    } catch {
+        json = {};
+    }
+
+    json = validateObject(json,validation);
+
+    return json;
+}
+
+function setCookie(name, value) {
+    let serialized = JSON.stringify(value);
+    localStorage[name] = serialized; 
+}
+
 export default {
     validateObject: validateObject,
-    getCookie: (name, validation={}) => {
-        let serialized = localStorage[name];
-
-        let json;
-        try {
-            json = JSON.parse(serialized);
-        } catch {
-            json = {};
-        }
-
-        json = validateObject(json,validation);
-
-        return json;
-    },
-    setCookie: (name, value) => {
-        let serialized = JSON.stringify(value);
-        localStorage[name] = serialized;
-    }
+    getCookie: getCookie,
+    setCookie: setCookie
 };
