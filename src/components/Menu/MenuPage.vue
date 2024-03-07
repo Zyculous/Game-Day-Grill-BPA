@@ -1,7 +1,7 @@
 <script setup>
 import { computed, reactive, nextTick } from 'vue'
 import MenuItem from './MenuItem.vue'
-import menu from '../assets/json/menu.json'
+import menu from '@/assets/json/menu.json'
 import anime from 'animejs'
 
 let categoriesDebounce = false;

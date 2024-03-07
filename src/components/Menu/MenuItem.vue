@@ -1,6 +1,6 @@
 <script setup>
-import cookieUtils from '../scripts/cookieUtils';
-import cartValidation from '../assets/validation/cart.json';
+import cookieUtils from '@/scripts/cookieUtils';
+import cartValidation from '@/assets/validation/cart.json';
 
 const props = defineProps([
     'name',
@@ -106,4 +106,4 @@ function addItemToCart(itemName) {
     border-radius: .6rem;
 }
 
-</style>
+</style>../../scripts/cookieUtils

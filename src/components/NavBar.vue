@@ -5,8 +5,8 @@ defineProps([
     'routes'
 ]);
 
-let fadeOutAnimation = false;
-let fancyBlockAnimation = true;
+let fadeOutAnimation = true;
+let fancyBlockAnimation = false;
 
 let debounce = false;
 

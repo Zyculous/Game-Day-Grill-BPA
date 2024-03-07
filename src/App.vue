@@ -2,13 +2,13 @@
 import { ref, computed } from 'vue';
 
 import HomePage from './components/HomePage.vue'
-import MenuPage from './components/MenuPage.vue'
+import MenuPage from './components/Menu/MenuPage.vue'
 import NotFound from './components/NotFound.vue'
 import AboutPage from './components/AboutPage.vue'
 import ReservationsPage from './components/ReservationsPage.vue'
 import TestPage from './components/TestPage.vue'
 import NavBar from './components/NavBar.vue'
-import CartPage from './components/CartPage.vue'
+import CartPage from './components/Cart/CartPage.vue'
 
 const routes = {
   '/home': {"page": HomePage, "navbarName": "Home", "hidden": false },
@@ -57,4 +57,4 @@ const currentView = computed(() => {
   width: 100%;
   height: 94%;
 }
-</style>
+</style>./components/Menu/MenuPage.vue./components/Cart/CartPage.vue
