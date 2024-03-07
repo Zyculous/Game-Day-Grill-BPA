@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "params": {
+        "items": { "type": "array", "item_validation": {
+            "type": "object",
+            "params": {
+                "name": { "type": "string", "default": "UNKNOWN ITEM" },
+                "id": { "type": "number", "default": -1 }
+            }
+        } },
+        "maxID": { "type": "number", "default": 0 }
+    }
+}

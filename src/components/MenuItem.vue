@@ -1,5 +1,6 @@
 <script setup>
 import cookieUtils from '../scripts/cookieUtils';
+import cartValidation from '../assets/validation/cart.json';
 
 const props = defineProps([
     'name',
@@ -7,12 +8,6 @@ const props = defineProps([
     'imgSrc',
     'prices'
 ]);
-
-function getValidCart() {
-    let cart = cookieUtils.getCookie('cart');
-    if (!Array.isArray(cart.items)) cart.items = [];
-    return cart;
-}
 
 function selectVariant(variantName) {
     let variantElements = document.getElementsByClassName('menu-item-price');
@@ -25,11 +20,13 @@ function selectVariant(variantName) {
 }
 
 function addItemToCart(itemName) {
-    let cart = getValidCart();
+    let cart = cookieUtils.getCookie('cart',cartValidation);
+
     cart.items.push({
         name: itemName,
-        
+        id: cart.maxID++
     });
+
     cookieUtils.setCookie('cart',cart);
 }
 

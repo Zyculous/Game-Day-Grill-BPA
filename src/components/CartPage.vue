@@ -1,10 +1,16 @@
 <script setup>
+import { ref } from 'vue';
+import cookieUtils from '../scripts/cookieUtils';
+import cartValidation from '../assets/validation/cart.json';
+
 function removeFromCart(item) {
   localStorage.removeItem(item)
 }
-let cartItems = JSON.parse(localStorage.getItem('cart'))
-cartItems = cartItems.spli
-console.log(cartItems)
+
+let cartItems = ref(cookieUtils.getCookie('cart',cartValidation));
+
+console.log(cartItems);
+
 </script>
 
 <template>
@@ -15,7 +21,7 @@ console.log(cartItems)
     </div>
     <div v-else>
       <ul>
-        <li v-for="item in cartItems" :key="item.id">
+        <li v-for="item in cartItems" :key="item.name">
           <div>{{ item.name }}</div>
           <div>{{ item.price }}</div>
           <button @click="removeFromCart(item.id)">Remove</button>
