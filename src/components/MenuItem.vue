@@ -6,10 +6,16 @@ const props = defineProps([
     'name',
     'description',
     'imgSrc',
-    'prices'
+    'variants',
+    'category'
 ]);
 
+let isNoVariantItem = props.variants.length <= 1
+
+let selectedVariant = "Default";
 function selectVariant(variantName) {
+    if (isNoVariantItem) return;
+
     let variantElements = document.getElementsByClassName('menu-item-price');
     for (let i = 0; i < variantElements.length; i++) {
         variantElements.item(i).setAttribute("selected","false");
@@ -24,8 +30,10 @@ function addItemToCart(itemName) {
     let cart = cookieUtils.getCookie('cart',cartValidation);
 
     cart.items.push({
+        category: props.category,
         name: itemName,
-        id: cart.maxID++
+        id: cart.nextID++,
+        variant: selectedVariant
     });
 
     cookieUtils.setCookie('cart',cart);
@@ -39,12 +47,12 @@ function addItemToCart(itemName) {
         <img :src="imgSrc" />
         <p class="menu-item-description">{{ description }}</p>
         <div class="menu-item-prices">
-            <div class="menu-item-price" selected="false" :class="name" v-for="(price, variantName) in prices" :key="variantName" :id="variantName" @click="selectVariant(variantName)">
-                <p v-if="variantName !== 0">{{ variantName }}</p>
-                <p>${{ price }}</p>
+            <div class="menu-item-price" selected="false" :class="name" v-for="variant in variants" :key="variant.name" :id="variant.name" @click="selectVariant(variant.name)">
+                <p v-if="variant.name !== 'Default'">{{ variant.name }}</p>
+                <p>${{ variant.price }}</p>
             </div>
         </div>
-        <button @click="addItemToCart(name, prices)">Add to Cart</button>
+        <button @click="addItemToCart(name)">Add to Cart</button>
     </div>
 </template>
 

@@ -16,6 +16,10 @@ function validateObject(obj, validation={}) {
         case "number":
             if (typeof(obj) !== 'number') obj = defaultValue || 0;
             break;
+        case "string":
+            if (obj === undefined) obj = defaultValue || "";
+            obj = obj.toString();
+            break;
         case "object":
             if (typeof(obj) !== 'object') obj = defaultValue || {};
 

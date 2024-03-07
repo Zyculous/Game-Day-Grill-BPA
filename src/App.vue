@@ -1,4 +1,6 @@
 <script setup>
+import { ref, computed } from 'vue';
+
 import HomePage from './components/HomePage.vue'
 import MenuPage from './components/MenuPage.vue'
 import NotFound from './components/NotFound.vue'
@@ -8,23 +10,13 @@ import TestPage from './components/TestPage.vue'
 import NavBar from './components/NavBar.vue'
 import CartPage from './components/CartPage.vue'
 
-import { ref, computed } from 'vue'
-
 const routes = {
-  '/home': HomePage,
-  '/menu': MenuPage,
-  '/about': AboutPage,
-  '/reservations': ReservationsPage,
-  '/test2': TestPage,
-  '/cart': CartPage
-}
-const navBar = {
-  '/home': 'Home',
-  '/menu': 'Menu',
-  '/about': 'About',
-  '/reservations': 'Reservations',
-  '/test2': 'Test',
-  '/cart': 'Cart'
+  '/home': {"page": HomePage, "navbarName": "Home", "hidden": false },
+  '/menu': {"page": MenuPage, "navbarName": "Menu", "hidden": false },
+  '/about': {"page": AboutPage, "navbarName": "About", "hidden": false },
+  '/reservations': {"page": ReservationsPage, "navbarName": "Reservations", "hidden": false },
+  '/test2': {"page": TestPage, "navbarName": "Test 2", "hidden": true },
+  '/cart': {"page": CartPage, "navbarName": "Cart", "hidden": false }
 }
 
 const currentPath = ref(window.location.hash)
@@ -34,20 +26,14 @@ window.addEventListener('hashchange', () => {
 })
 
 const currentView = computed(() => {
-  return routes[currentPath.value.slice(1) || '/'] || NotFound
+  return routes[currentPath.value.slice(1) || '/'].page || NotFound;
 })
 
 </script>
 
 <template>
   <div class="app">
-    <NavBar :routes="navBar"></NavBar>
-    <!--<div class="navbar">
-      <a class="link" href="#/home">Home</a> <p>|</p> 
-      <a class="link" href="#/menu">Menu</a> <p>|</p>
-      <a class="link" href="#/reservations">Reservations</a> <p>|</p>
-      <a class="link" href="#/about">About</a> <p>|</p>
-    </div>-->
+    <NavBar :routes="routes"></NavBar>
     <div class="page" id="page">
       <component :is="currentView" />
     </div>

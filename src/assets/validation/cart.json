@@ -4,10 +4,12 @@
         "items": { "type": "array", "item_validation": {
             "type": "object",
             "params": {
+                "category": { "type": "string", "default": "UNKNOWN CATEGORY" },
                 "name": { "type": "string", "default": "UNKNOWN ITEM" },
-                "id": { "type": "number", "default": -1 }
+                "id": { "type": "number", "default": -1 },
+                "variant": { "type": "string", "default": "UNKNOWN VARIANT" }
             }
         } },
-        "maxID": { "type": "number", "default": 0 }
+        "nextID": { "type": "number", "default": 0 }
     }
 }

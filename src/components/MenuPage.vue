@@ -138,7 +138,8 @@ async function handleCategoryClicked(categoryID) {
         :name="menuItem.name"
         :img-src="menuItem.src"
         :description="menuItem.description"
-        :prices="menuItem.price"
+        :variants="menuItem.variants"
+        :category="selectedCategoryID.id"
         v-for="menuItem in menuItems"
         :key="menuItem.name"
       />
