@@ -14,7 +14,7 @@ defineProps([
   <tr class="cart-item">
     <td>{{ name }}</td>
     <td>{{ variant !== 'Default' ? variant : '-' }}</td>
-    <td>{{ price }}</td>
+    <td>${{ price }}</td>
     <button @click="removeFromCart(id)">Remove</button>
   </tr>
 </template>

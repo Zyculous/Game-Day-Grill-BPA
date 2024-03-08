@@ -47,6 +47,8 @@ const currentView = computed(() => {
   align-content: center;
   width: 100%;
   min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .page {
@@ -55,6 +57,6 @@ const currentView = computed(() => {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 94%;
+  height: 92%;
 }
-</style>./components/Menu/MenuPage.vue./components/Cart/CartPage.vue
+</style>

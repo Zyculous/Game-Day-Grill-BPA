@@ -63,10 +63,10 @@ function addItemToCart(itemName) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 10px;
-    padding: 10px;
-    border: 5px solid #85ae84;
-    border-radius: 10px;
+    margin: .6rem;
+    padding: .6rem;
+    border: .3rem solid var(--color-highlight-1);
+    border-radius: .6rem;
     color: #d2cece;
 }
 

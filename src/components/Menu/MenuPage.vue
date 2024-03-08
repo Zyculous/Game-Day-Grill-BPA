@@ -1,8 +1,10 @@
 <script setup>
-import { computed, reactive, nextTick } from 'vue'
-import MenuItem from './MenuItem.vue'
-import menu from '@/assets/json/menu.json'
-import anime from 'animejs'
+import { computed, reactive, nextTick } from 'vue';
+import menu from '@/assets/json/menu.json';
+import anime from 'animejs';
+
+import MenuItem from './MenuItem.vue';
+import CartWidget from '@/components/Cart/CartWidget.vue';
 
 let categoriesDebounce = false;
 
@@ -119,6 +121,7 @@ async function handleCategoryClicked(categoryID) {
 </script>
 
 <template>
+  <CartWidget />
   <div class="menu-page">
     <h1 class="title" text="Menu&nbsp;Page" id="menu-title">Menu&nbsp;Page</h1>
     <div class="menu">
