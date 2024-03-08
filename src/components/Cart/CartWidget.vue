@@ -65,8 +65,8 @@ let prices = computed(() => {
 </script>
 
 <template>
-    <div class="cart-widget" @click="toggleMenu()">
-        <div class="cart-widget-selector"></div>
+    <div class="cart-widget">
+        <div class="cart-widget-selector" @click="toggleMenu()"></div>
         <div class="cart-widget-display">
             <div v-if="cartComputed.items.length === 0" class="cart-empty">
                 <p>Your cart is empty.</p>
