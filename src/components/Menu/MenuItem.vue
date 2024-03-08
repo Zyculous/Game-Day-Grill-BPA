@@ -1,6 +1,8 @@
 <script setup>
 import cookieUtils from '@/scripts/cookieUtils';
 import cartValidation from '@/assets/validation/cart.json';
+import anime from 'animejs';
+import { nextTick } from 'vue';
 
 const props = defineProps([
     'name',
@@ -37,6 +39,42 @@ function addItemToCart(itemName) {
     });
 
     cookieUtils.setCookie('cart',cart);
+    addCartAnimation(itemName);
+}
+
+function addCartAnimation(itemName){
+    let item = document.getElementById(itemName).children[1];
+    let itemRect = item.getBoundingClientRect();
+    let parent = item.parentElement;
+    let cartWidget = document.querySelector('.cart-widget');
+    let cartWidgetRect = cartWidget.getBoundingClientRect();
+    let clone = item.cloneNode(true);
+    clone.id = "cloneof" + itemName;
+    parent.appendChild(clone);
+    clone.style.position = 'absolute';
+    clone.style.zIndex = 1000;
+    //clone.style.left = itemRect.left + 'px';
+    //clone.style.top = itemRect.top + 'px';
+
+    nextTick( () => {
+        anime({
+        targets: clone,
+        translateX: (cartWidgetRect.left - itemRect.left),
+        translateY: (-cartWidgetRect.top - itemRect.top),
+        scale: .01,
+        duration: 1700,
+        easing: "easeInOutExpo",
+        complete: () => {
+            parent.removeChild(clone);
+        }
+        });
+        anime({
+            targets: item,
+            opacity: [-10, 1],
+            duration: 1000,
+            direction: 'forwards',
+        })
+    });
 }
 
 </script>

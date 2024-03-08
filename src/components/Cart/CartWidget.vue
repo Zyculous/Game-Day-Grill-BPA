@@ -45,6 +45,10 @@ function removeFromCart(id) {
 
   cookieUtils.setCookie('cart',cart.value);
 }
+function clearCart() {
+  cart.value.items = [];
+  cookieUtils.setCookie('cart',cart.value);
+}
 
 let cart = ref(cookieUtils.getCookie('cart',cartValidation));
 let cartComputed = computed(() => cart.value);
@@ -68,6 +72,7 @@ let prices = computed(() => {
     <div class="cart-widget">
         <div class="cart-widget-selector" @click="toggleMenu()"></div>
         <div class="cart-widget-display">
+            <input type="button" @click="clearCart()" value="X"/>
             <div v-if="cartComputed.items.length === 0" class="cart-empty">
                 <p>Your cart is empty.</p>
             </div>
